@@ -102,7 +102,7 @@ function MisoInfo({
         <div className="flex flex-col col-span-4">
           <div className="mx-auto">
             <div className="text-sm sm:text-lg">{'MIN Raised'}</div>
-            <div className="text-base font-bold text-white md:text-xl">{`${minRaised} $SUSHI`}</div>
+            <div className="text-base font-bold text-white md:text-xl">{`${minRaised} $FINA`}</div>
             <div className="text-sm sm:text-base">{`$${minRaisedUsd} USD`}</div>
           </div>
         </div>

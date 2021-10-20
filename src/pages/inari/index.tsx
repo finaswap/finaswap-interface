@@ -8,7 +8,7 @@ import {
 
 import { ArrowRightIcon } from '@heroicons/react/outline'
 import BalancePanel from '../../features/inari/BalancePanel'
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from '@finaswap/sdk'
 import Container from '../../components/Container'
 import DoubleGlowShadow from '../../components/DoubleGlowShadow'
 import { Field } from '../../state/inari/types'
@@ -58,7 +58,7 @@ const Inari = () => {
               {i18n._(t`One-Click Strategies`)}
             </Typography>
             <Typography>
-              {i18n._(t`Take your SUSHI and invest in various strategies with one click! Earn extra yields with BentoBox, use as
+              {i18n._(t`Take your FINA and invest in various strategies with one click! Earn extra yields with BentoBox, use as
               collateral on other platforms, and more!`)}
             </Typography>
           </div>

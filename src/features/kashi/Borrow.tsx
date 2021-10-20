@@ -1,6 +1,6 @@
 import { ExchangeRateCheckBox, SwapCheckbox } from './Checkbox'
 import { KashiApproveButton, TokenApproveButton } from './Button'
-import { Percent, SUSHISWAP_MULTISWAPPER_ADDRESS, WNATIVE } from '@sushiswap/sdk'
+import { Percent, FINASWAP_MULTISWAPPER_ADDRESS, WNATIVE } from '@finaswap/sdk'
 import React, { useMemo, useState } from 'react'
 import { Warning, Warnings } from '../../entities/Warnings'
 import { ZERO, e10, maximum, minimum } from '../../functions/math'
@@ -254,7 +254,7 @@ export default function Borrow({ pair }: BorrowProps) {
       cooker.borrow(
         borrowValue.toBigNumber(pair.asset.tokenInfo.decimals),
         swap || useBentoBorrow,
-        swap ? SUSHISWAP_MULTISWAPPER_ADDRESS[chainId || 1] : ''
+        swap ? FINASWAP_MULTISWAPPER_ADDRESS[chainId || 1] : ''
       )
     }
     if (borrowValueSet && trade) {
@@ -288,7 +288,7 @@ export default function Borrow({ pair }: BorrowProps) {
       )
 
       cooker.action(
-        SUSHISWAP_MULTISWAPPER_ADDRESS[chainId || 1],
+        FINASWAP_MULTISWAPPER_ADDRESS[chainId || 1],
         ZERO,
         hexConcat([hexlify('0x3087d742'), data]),
         false,

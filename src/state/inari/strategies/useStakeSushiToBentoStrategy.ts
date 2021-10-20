@@ -1,5 +1,5 @@
-import { ChainId, SUSHI_ADDRESS } from '@sushiswap/sdk'
-import { SUSHI, XSUSHI } from '../../../config/tokens'
+import { ChainId, FINA_ADDRESS } from '@finaswap/sdk'
+import { FINA, XFINA } from '../../../config/tokens'
 import { StrategyGeneralInfo, StrategyHook, StrategyTokenDefinitions } from '../types'
 import { useEffect, useMemo } from 'react'
 
@@ -14,37 +14,36 @@ import { useLingui } from '@lingui/react'
 import { useTokenBalances } from '../../wallet/hooks'
 
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
-  name: i18n._(t`SUSHI → Bento`),
-  steps: [i18n._(t`SUSHI`), i18n._(t`xSUSHI`), i18n._(t`BentoBox`)],
+  name: i18n._(t`FINA → Bento`),
+  steps: [i18n._(t`FINA`), i18n._(t`xFINA`), i18n._(t`BentoBox`)],
   zapMethod: 'stakeSushiToBento',
   unzapMethod: 'unstakeSushiFromBento',
-  description:
-    i18n._(t`Stake SUSHI for xSUSHI and deposit into BentoBox in one click. xSUSHI in BentoBox is automatically
+  description: i18n._(t`Stake FINA for xFINA and deposit into BentoBox in one click. xFINA in BentoBox is automatically
                 invested into a passive yield strategy, and can be lent or used as collateral for borrowing in Kashi.`),
-  inputSymbol: i18n._(t`SUSHI`),
-  outputSymbol: i18n._(t`xSUSHI in BentoBox`),
+  inputSymbol: i18n._(t`FINA`),
+  outputSymbol: i18n._(t`xFINA in BentoBox`),
 })
 
 export const tokenDefinitions: StrategyTokenDefinitions = {
   inputToken: {
     chainId: ChainId.MAINNET,
-    address: SUSHI_ADDRESS[ChainId.MAINNET],
+    address: FINA_ADDRESS[ChainId.MAINNET],
     decimals: 18,
-    symbol: 'SUSHI',
+    symbol: 'FINA',
   },
   outputToken: {
     chainId: ChainId.MAINNET,
     address: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
     decimals: 18,
-    symbol: 'XSUSHI',
+    symbol: 'XFINA',
   },
 }
 
 const useStakeSushiToBentoStrategy = (): StrategyHook => {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
-  const balances = useTokenBalances(account, [SUSHI[ChainId.MAINNET], XSUSHI])
-  const xSushiBentoBalance = useBentoBalance(XSUSHI.address)
+  const balances = useTokenBalances(account, [FINA[ChainId.MAINNET], XFINA])
+  const xSushiBentoBalance = useBentoBalance(XFINA.address)
 
   // Strategy ends in BentoBox so use BaseBentoBox strategy
   const general = useMemo(() => GENERAL(i18n), [i18n])
@@ -61,8 +60,8 @@ const useStakeSushiToBentoStrategy = (): StrategyHook => {
     if (!balances) return
 
     setBalances({
-      inputTokenBalance: balances[SUSHI[ChainId.MAINNET].address],
-      outputTokenBalance: tryParseAmount(xSushiBentoBalance?.value?.toFixed(18) || '0', XSUSHI),
+      inputTokenBalance: balances[FINA[ChainId.MAINNET].address],
+      outputTokenBalance: tryParseAmount(xSushiBentoBalance?.value?.toFixed(18) || '0', XFINA),
     })
   }, [balances, setBalances, xSushiBentoBalance?.value])
 

@@ -1,6 +1,6 @@
 import { ArrowDownIcon, InformationCircleIcon } from '@heroicons/react/solid'
-import { ChainId, Currency, Token } from '@sushiswap/sdk'
-import { MEOW, SUSHI, XSUSHI } from '../../config/tokens'
+import { ChainId, Currency, Token } from '@finaswap/sdk'
+import { MEOW, FINA, XFINA } from '../../config/tokens'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import Container from '../../components/Container'
@@ -50,7 +50,7 @@ export default function Meowshi() {
   })
 
   const [currencies, setCurrencies] = useState({
-    [Field.INPUT]: SUSHI[ChainId.MAINNET],
+    [Field.INPUT]: FINA[ChainId.MAINNET],
     [Field.OUTPUT]: MEOW,
   })
 
@@ -58,11 +58,11 @@ export default function Meowshi() {
     async (val, field) => {
       setFields((prevState) => {
         const inputRate =
-          currencies[Field.INPUT] === XSUSHI
+          currencies[Field.INPUT] === XFINA
             ? meowshiPerXSushi.mul(e10(5))
             : meowshiPerXSushi.mul(e10(5)).mulDiv(e10(18), sushiPerXSushi.toString().toBigNumber(18))
         const outputRate =
-          currencies[Field.OUTPUT] === XSUSHI
+          currencies[Field.OUTPUT] === XFINA
             ? xSushiPerMeowshi.div(e10(5))
             : xSushiPerMeowshi.mulDiv(sushiPerXSushi.toString().toBigNumber(18), e10(18)).div(e10(5))
 
@@ -145,7 +145,7 @@ export default function Meowshi() {
         <div className="bg-[rgba(255,255,255,0.04)] p-4 py-2 rounded flex flex-row items-center gap-4 mb-[54px]">
           <InformationCircleIcon width={48} height={48} color="pink" />
           <Typography variant="xs" weight={700}>
-            {i18n._(t`MEOW tokens wrap xSUSHI into BentoBox for double yields and can be
+            {i18n._(t`MEOW tokens wrap xFINA into BentoBox for double yields and can be
               used to vote in special MEOW governor contracts.`)}
           </Typography>
         </div>
@@ -162,9 +162,9 @@ export default function Meowshi() {
           </div>
           <Typography variant="sm" className="text-secondary ml-[26px]">
             {currencies[Field.INPUT]?.symbol} →{' '}
-            {(currencies[Field.INPUT] === SUSHI[ChainId.MAINNET] ||
-              currencies[Field.OUTPUT] === SUSHI[ChainId.MAINNET]) &&
-              ' xSUSHI → '}
+            {(currencies[Field.INPUT] === FINA[ChainId.MAINNET] ||
+              currencies[Field.OUTPUT] === FINA[ChainId.MAINNET]) &&
+              ' xFINA → '}
             {currencies[Field.OUTPUT]?.symbol}
           </Typography>
         </div>

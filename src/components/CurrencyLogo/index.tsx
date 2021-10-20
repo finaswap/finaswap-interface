@@ -1,4 +1,4 @@
-import { ChainId, Currency, WNATIVE } from '@sushiswap/sdk'
+import { ChainId, Currency, WNATIVE } from '@finaswap/sdk'
 import React, { FunctionComponent, useMemo } from 'react'
 
 import Logo from '../Logo'

@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from '@finaswap/sdk'
 import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../../hooks'
@@ -27,7 +27,7 @@ export default function Buy() {
 
     const widget = new RampInstantSDK({
       userAddress: account,
-      hostAppName: 'SUSHI',
+      hostAppName: 'FINA',
       hostLogoUrl: 'http://sushiswap-interface-canary.vercel.app/_next/image?url=%2Flogo.png&w=32&q=75',
       defaultAsset: DEFAULT_CRYPTO_CURRENCY[chainId],
     })

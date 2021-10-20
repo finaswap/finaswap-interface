@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, Ether, Percent, TradeType, Trade as V2Trade } from '@sushiswap/sdk'
+import { ChainId, Currency, CurrencyAmount, Ether, Percent, TradeType, Trade as V2Trade } from '@finaswap/sdk'
 import React, { useMemo } from 'react'
 import { RowBetween, RowFixed } from '../../../components/Row'
 
@@ -89,9 +89,9 @@ export function AdvancedSwapDetails({ trade, allowedSlippage, minerBribe }: Adva
 
       <RowBetween>
         <RowFixed>
-          <div className="text-sm text-secondary">{i18n._(t`xSUSHI Fee`)}</div>
+          <div className="text-sm text-secondary">{i18n._(t`xFINA Fee`)}</div>
           <QuestionHelper
-            text={i18n._(t`A portion of each trade (0.05%) goes to xSUSHI holders as a protocol incentive.`)}
+            text={i18n._(t`A portion of each trade (0.05%) goes to xFINA holders as a protocol incentive.`)}
           />
         </RowFixed>
         <div className="text-sm font-bold text-high-emphesis">
