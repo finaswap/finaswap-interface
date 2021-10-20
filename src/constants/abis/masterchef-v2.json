@@ -110,7 +110,7 @@
     },
     {
         "inputs": [],
-        "name": "SUSHI",
+        "name": "FINA",
         "outputs": [{ "internalType": "contract IERC20", "name": "", "type": "address" }],
         "stateMutability": "view",
         "type": "function"

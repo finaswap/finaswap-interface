@@ -12,7 +12,7 @@ import { NEVER_RELOAD, useSingleCallResult, useSingleContractMultipleData } from
 import { useMasterChefContract, useMasterChefV2Contract, useMiniChefContract } from '../../hooks'
 
 import { Contract } from '@ethersproject/contracts'
-import { SUSHI } from '../../constants'
+import { FINA } from '../../constants'
 import { Zero } from '@ethersproject/constants'
 import concat from 'lodash/concat'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
@@ -94,7 +94,7 @@ export function usePendingSushi(farm) {
 
   const amount = value ? JSBI.BigInt(value.toString()) : undefined
 
-  return amount ? CurrencyAmount.fromRawAmount(SUSHI[chainId], amount) : undefined
+  return amount ? CurrencyAmount.fromRawAmount(FINA[chainId], amount) : undefined
 }
 
 export function usePendingToken(farm, contract) {

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import { CRXSUSHI, SUSHI, XSUSHI } from '../../../constants'
-import { ChainId, CurrencyAmount, SUSHI_ADDRESS, Token } from '@finaswap/sdk'
+import { CRXFINA, FINA, XFINA } from '../../../constants'
+import { ChainId, CurrencyAmount, FINA_ADDRESS, Token } from '@finaswap/sdk'
 import { tryParseAmount } from '../../../functions'
 import { useActiveWeb3React, useApproveCallback, useInariContract, useZenkoContract } from '../../../hooks'
 import { useTokenBalances } from '../../wallet/hooks'
@@ -10,27 +10,27 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDerivedInariState } from '../hooks'
 
 export const general: StrategyGeneralInfo = {
-  name: 'SUSHI → Cream',
-  steps: ['SUSHI', 'xSUSHI', 'Cream'],
+  name: 'FINA → Cream',
+  steps: ['FINA', 'xFINA', 'Cream'],
   zapMethod: 'stakeSushiToCream',
   unzapMethod: 'unstakeSushiFromCream',
-  description: t`Stake SUSHI for xSUSHI and deposit into Cream in one click. xSUSHI in Cream (crXSUSHI) can be lent or used as collateral for borrowing.`,
-  inputSymbol: 'SUSHI',
-  outputSymbol: 'xSUSHI in Cream',
+  description: t`Stake FINA for xFINA and deposit into Cream in one click. xFINA in Cream (crXFINA) can be lent or used as collateral for borrowing.`,
+  inputSymbol: 'FINA',
+  outputSymbol: 'xFINA in Cream',
 }
 
 export const tokenDefinitions: StrategyTokenDefinitions = {
   inputToken: {
     chainId: ChainId.MAINNET,
-    address: SUSHI_ADDRESS[ChainId.MAINNET],
+    address: FINA_ADDRESS[ChainId.MAINNET],
     decimals: 18,
-    symbol: 'SUSHI',
+    symbol: 'FINA',
   },
   outputToken: {
     chainId: ChainId.MAINNET,
     address: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
     decimals: 18,
-    symbol: 'XSUSHI',
+    symbol: 'XFINA',
   },
 }
 
@@ -39,11 +39,11 @@ const useStakeSushiToCreamStrategy = (): StrategyHook => {
   const { zapIn, inputValue } = useDerivedInariState()
   const zenkoContract = useZenkoContract()
   const inariContract = useInariContract()
-  const balances = useTokenBalances(account, [SUSHI[ChainId.MAINNET], CRXSUSHI])
+  const balances = useTokenBalances(account, [FINA[ChainId.MAINNET], CRXFINA])
   const cTokenAmountRef = useRef<CurrencyAmount<Token>>(null)
   const approveAmount = useMemo(() => (zapIn ? inputValue : cTokenAmountRef.current), [inputValue, zapIn])
 
-  // Override approveCallback for this strategy as we need to approve CRXSUSHI on zapOut
+  // Override approveCallback for this strategy as we need to approve CRXFINA on zapOut
   const approveCallback = useApproveCallback(approveAmount, inariContract?.address)
   const { execute, setBalances, ...baseStrategy } = useBaseStrategy({
     id: 'stakeSushiToCreamStrategy',
@@ -55,14 +55,14 @@ const useStakeSushiToCreamStrategy = (): StrategyHook => {
     async (val: CurrencyAmount<Token>) => {
       if (!zenkoContract || !val) return null
 
-      const bal = await zenkoContract.toCtoken(CRXSUSHI.address, val.quotient.toString())
-      return CurrencyAmount.fromRawAmount(CRXSUSHI, bal.toString())
+      const bal = await zenkoContract.toCtoken(CRXFINA.address, val.quotient.toString())
+      return CurrencyAmount.fromRawAmount(CRXFINA, bal.toString())
     },
     [zenkoContract]
   )
 
-  // Run before executing transaction creation by transforming from xSUSHI value to crXSUSHI value
-  // As you will be spending crXSUSHI when unzapping from this strategy
+  // Run before executing transaction creation by transforming from xFINA value to crXFINA value
+  // As you will be spending crXFINA when unzapping from this strategy
   const preExecute = useCallback(
     async (val: CurrencyAmount<Token>) => {
       if (zapIn) return execute(val)
@@ -79,14 +79,14 @@ const useStakeSushiToCreamStrategy = (): StrategyHook => {
     if (!zenkoContract || !balances) return
 
     const main = async () => {
-      if (!balances[CRXSUSHI.address]) return tryParseAmount('0', XSUSHI)
+      if (!balances[CRXFINA.address]) return tryParseAmount('0', XFINA)
       const bal = await zenkoContract.fromCtoken(
-        CRXSUSHI.address,
-        balances[CRXSUSHI.address].toFixed().toBigNumber(CRXSUSHI.decimals).toString()
+        CRXFINA.address,
+        balances[CRXFINA.address].toFixed().toBigNumber(CRXFINA.decimals).toString()
       )
       setBalances({
-        inputTokenBalance: balances[SUSHI[ChainId.MAINNET].address],
-        outputTokenBalance: CurrencyAmount.fromRawAmount(XSUSHI, bal.toString()),
+        inputTokenBalance: balances[FINA[ChainId.MAINNET].address],
+        outputTokenBalance: CurrencyAmount.fromRawAmount(XFINA, bal.toString()),
       })
     }
 

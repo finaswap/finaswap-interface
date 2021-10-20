@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, JSBI, Percent, Token, TradeType, Trade as V2Trade } from '@finaswap/sdk'
-import { DAI, SUSHI, USDC } from '../constants/tokens'
+import { DAI, FINA, USDC } from '../constants/tokens'
 import { useMemo, useState } from 'react'
 
 import { splitSignature } from 'ethers/lib/utils'
@@ -37,7 +37,7 @@ const PERMITTABLE_TOKENS: {
       name: 'Dai Stablecoin',
       version: '1',
     },
-    [SUSHI[1].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+    [FINA[1].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
   },
   [4]: {
     ['0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735']: {
@@ -45,10 +45,10 @@ const PERMITTABLE_TOKENS: {
       name: 'Dai Stablecoin',
       version: '1',
     },
-    [SUSHI[4].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+    [FINA[4].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
   },
   [3]: {
-    [SUSHI[3].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+    [FINA[3].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
     ['0x07865c6E87B9F70255377e024ace6630C1Eaa37F']: {
       type: PermitType.AMOUNT,
       name: 'USD Coin',
@@ -56,10 +56,10 @@ const PERMITTABLE_TOKENS: {
     },
   },
   [5]: {
-    [SUSHI[5].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+    [FINA[5].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
   },
   [42]: {
-    [SUSHI[42].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+    [FINA[42].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
   },
 }
 

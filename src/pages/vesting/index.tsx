@@ -62,7 +62,7 @@ const Strategies = () => {
                 <div
                   className={`bg-dark-900 cursor-pointer border border-transparent pl-5 py-2 rounded whitespace-nowrap w-full font-bold h-[48px] flex items-center text-sm`}
                 >
-                  {'SUSHI → MEOW'}
+                  {'FINA → MEOW'}
                 </div>
               </Link>
             </div>
@@ -224,8 +224,8 @@ const ProtocolVesting = () => {
       <div className="relative w-full h-full overflow-hidden rounded bg-dark-900">
         <div className="flex flex-col gap-3 p-4">
           <div className="flex flex-row justify-between">
-            <div className="font-bold text-white">{i18n._(t`Claimable SUSHI from Protocols`)}</div>
-            <QuestionHelper text="If you participated in staking progammes from Alpha Homora, Cream, DefiDollar, Dracula, Harvest, Pickle, or Yam you can claim your vested SUSHI directly here" />
+            <div className="font-bold text-white">{i18n._(t`Claimable FINA from Protocols`)}</div>
+            <QuestionHelper text="If you participated in staking progammes from Alpha Homora, Cream, DefiDollar, Dracula, Harvest, Pickle, or Yam you can claim your vested FINA directly here" />
           </div>
           {/* <div style={{ display: 'flex', alignItems: 'baseline' }}> */}
           <div className="flex flex-col items-baseline pb-4">
@@ -235,7 +235,7 @@ const ProtocolVesting = () => {
             {account ? (
               <div className="text-sm text-secondary">
                 {totalLocked ? (
-                  i18n._(t`Historical Total Locked: ${formatNumber(totalLocked)} SUSHI`)
+                  i18n._(t`Historical Total Locked: ${formatNumber(totalLocked)} FINA`)
                 ) : (
                   <Dots>{i18n._(t`Historical Total Locked: Fetching Total`)}</Dots>
                 )}
@@ -269,7 +269,7 @@ const ProtocolVesting = () => {
             {pendingTreasurySignature ? (
               <Dots>{i18n._(t`Pending Treasury Transfer`)}</Dots>
             ) : (
-              <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim SUSHI`)}</>
+              <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim FINA`)}</>
             )}
 
             {attempting && (
@@ -359,8 +359,8 @@ const WeeklyVesting = () => {
       <div className="relative w-full h-full overflow-hidden rounded bg-dark-900">
         <div className="flex flex-col gap-3 p-4">
           <div className="flex flex-row justify-between">
-            <div className="font-bold text-white">{i18n._(t`Your Claimable SUSHI this Week`)}</div>
-            <QuestionHelper text="Your Vested SUSHI will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next." />
+            <div className="font-bold text-white">{i18n._(t`Your Claimable FINA this Week`)}</div>
+            <QuestionHelper text="Your Vested FINA will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next." />
           </div>
           {/* <div style={{ display: 'flex', alignItems: 'baseline' }}> */}
           <div className="flex flex-col items-baseline pb-4">
@@ -370,7 +370,7 @@ const WeeklyVesting = () => {
             {account ? (
               <div className="text-sm text-secondary">
                 {totalLocked ? (
-                  i18n._(t`Historical Total Locked: ${formatNumber(totalLocked)} SUSHI`)
+                  i18n._(t`Historical Total Locked: ${formatNumber(totalLocked)} FINA`)
                 ) : (
                   <Dots>{i18n._(t`Historical Total Locked: Fetching Total`)}</Dots>
                 )}
@@ -404,7 +404,7 @@ const WeeklyVesting = () => {
             {pendingTreasurySignature ? (
               <Dots>{i18n._(t`Pending Treasury Transfer`)}</Dots>
             ) : (
-              <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim SUSHI`)}</>
+              <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim FINA`)}</>
             )}
 
             {attempting && (

@@ -48,13 +48,13 @@ const useMaker = () => {
     }
   }, [addTransaction, saaveContract?.address, sushiContract])
 
-  // Saave Sushi - xSUSHI - aXSUSHI
+  // Saave Sushi - xFINA - aXFINA
   const saave = useCallback(
     async (amount: BalanceProps | undefined) => {
       if (amount?.value) {
         try {
           const tx = await saaveContract?.saave(amount?.value)
-          return addTransaction(tx, { summary: 'SUSHI → xSUSHI → aXSUSHI' })
+          return addTransaction(tx, { summary: 'FINA → xFINA → aXFINA' })
         } catch (e) {
           return e
         }

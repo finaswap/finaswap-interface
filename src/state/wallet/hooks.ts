@@ -3,7 +3,7 @@ import { useMultipleContractSingleData, useSingleContractMultipleData } from '..
 
 import ERC20_ABI from '../../constants/abis/erc20.json'
 import { Interface } from '@ethersproject/abi'
-import { SUSHI } from './../../constants'
+import { FINA } from './../../constants'
 import { isAddress } from '../../functions/validate'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useAllTokens } from '../../hooks/Tokens'

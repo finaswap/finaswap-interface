@@ -1,6 +1,6 @@
 import { useBentoBoxContract } from './useContract'
 import { useEffect, useState } from 'react'
-import { XSUSHI } from '../constants'
+import { XFINA } from '../constants'
 import { BigNumber } from 'ethers'
 
 export default function useMeowshiPerXSushi() {
@@ -10,8 +10,8 @@ export default function useMeowshiPerXSushi() {
   useEffect(() => {
     if (!bentoboxContract) return
     ;(async () => {
-      const toShare = await bentoboxContract.toShare(XSUSHI.address, '1'.toBigNumber(XSUSHI.decimals), false)
-      const toAmount = await bentoboxContract.toAmount(XSUSHI.address, '1'.toBigNumber(XSUSHI.decimals), false)
+      const toShare = await bentoboxContract.toShare(XFINA.address, '1'.toBigNumber(XFINA.decimals), false)
+      const toAmount = await bentoboxContract.toAmount(XFINA.address, '1'.toBigNumber(XFINA.decimals), false)
       setState([toShare, toAmount])
     })()
   }, [bentoboxContract])

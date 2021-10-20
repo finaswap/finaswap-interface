@@ -8,13 +8,13 @@ const tools = [
   {
     id: 1,
     name: 'MEOWSHI',
-    description: 'Redonominate xSUSHI into MEOWSHI',
+    description: 'Redonominate xFINA into MEOWSHI',
     href: '/tools/meowshi',
   },
   {
     id: 2,
     name: 'INARI',
-    description: 'Deposit SUSHI in various strategies & platforms in one click!',
+    description: 'Deposit FINA in various strategies & platforms in one click!',
     href: '/inari',
   },
 ]

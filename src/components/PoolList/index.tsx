@@ -72,7 +72,7 @@ const PoolList = () => {
     <>
       <Head>
         <title>Zap | Sushi</title>
-        <meta name="description" content="Farm SUSHI by staking LP (Liquidity Provider) tokens" />
+        <meta name="description" content="Farm FINA by staking LP (Liquidity Provider) tokens" />
       </Head>
       <div className="container max-w-2xl px-0 mx-auto sm:px-4">
         <Card

@@ -13,8 +13,8 @@ import {
   MINICHEF_ADDRESS,
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
-  SUSHISWAP_SWAPPER_ADDRESS,
-  SUSHI_ADDRESS,
+  FINASWAP_SWAPPER_ADDRESS,
+  FINA_ADDRESS,
   TIMELOCK_ADDRESS,
   WNATIVE,
   ZAPPER_ADDRESS,
@@ -57,9 +57,9 @@ import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import PENDING_ABI from '../constants/abis/pending.json'
 import ROUTER_ABI from '../constants/abis/router.json'
 import SAAVE_ABI from '../constants/abis/saave.json'
-import SUSHIROLL_ABI from '@finaswap/core/abi/FinaMove.json'
-import SUSHISWAP_TWAP_ORACLE_ABI from '../constants/abis/sushiswap-slp-oracle.json'
-import SUSHI_ABI from '../constants/abis/sushi.json'
+import FINAROLL_ABI from '@finaswap/core/abi/FinaMove.json'
+import FINASWAP_TWAP_ORACLE_ABI from '../constants/abis/sushiswap-slp-oracle.json'
+import FINA_ABI from '../constants/abis/sushi.json'
 import TIMELOCK_ABI from '../constants/abis/timelock.json'
 import UNI_FACTORY_ABI from '../constants/abis/uniswap-v2-factory.json'
 import WETH9_ABI from '../constants/abis/weth.json'
@@ -163,7 +163,7 @@ export function useMulticall2Contract() {
 
 export function useSushiContract(withSignerIfPossible = true): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && SUSHI_ADDRESS[chainId], SUSHI_ABI, withSignerIfPossible)
+  return useContract(chainId && FINA_ADDRESS[chainId], FINA_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
@@ -220,7 +220,7 @@ export function useKashiPairCloneContract(address: string, withSignerIfPossible?
 
 export function useSushiSwapSwapper(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && SUSHISWAP_SWAPPER_ADDRESS[chainId], BASE_SWAPPER_ABI, false)
+  return useContract(chainId && FINASWAP_SWAPPER_ADDRESS[chainId], BASE_SWAPPER_ABI, false)
 }
 
 export function useChainlinkOracle(): Contract | null {
@@ -423,15 +423,15 @@ export function useSushiRollContract(version: 'v1' | 'v2' = 'v2'): Contract | nu
         break
     }
   }
-  return useContract(address, SUSHIROLL_ABI, true)
+  return useContract(address, FINAROLL_ABI, true)
 }
 
 // export function usePancakeRollV1Contract(): Contract | null {
-//     return useContract('0x677978dE066b3f5414eeA56644d9fCa3c75482a1', SUSHIROLL_ABI, true)
+//     return useContract('0x677978dE066b3f5414eeA56644d9fCa3c75482a1', FINAROLL_ABI, true)
 // }
 
 // export function usePancakeRollV2Contract(): Contract | null {
-//     return useContract('', SUSHIROLL_ABI, true)
+//     return useContract('', FINAROLL_ABI, true)
 // }
 
 export function useDashboardContract(): Contract | null {
