@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from '@finaswap/sdk'
 
 // Multichain Explorer
 const builders = {

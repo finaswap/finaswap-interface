@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { CRXSUSHI, SUSHI, XSUSHI } from '../../../constants'
-import { ChainId, CurrencyAmount, SUSHI_ADDRESS, Token } from '@sushiswap/sdk'
+import { ChainId, CurrencyAmount, SUSHI_ADDRESS, Token } from '@finaswap/sdk'
 import { tryParseAmount } from '../../../functions'
 import { useActiveWeb3React, useApproveCallback, useInariContract, useZenkoContract } from '../../../hooks'
 import { useTokenBalances } from '../../wallet/hooks'

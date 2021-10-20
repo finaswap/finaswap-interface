@@ -8,7 +8,7 @@ import {
   Token,
   TradeType,
   Trade as V2Trade,
-} from '@sushiswap/sdk'
+} from '@finaswap/sdk'
 import { ApprovalState, useApproveCallbackFromTrade } from '../../../hooks/useApproveCallback'
 import { ArrowWrapper, BottomGrouping, SwapCallbackError } from '../../../features/swap/styleds'
 import { AutoRow, RowBetween, RowFixed } from '../../../components/Row'

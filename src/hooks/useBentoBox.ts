@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { WNATIVE } from '@sushiswap/sdk'
+import { WNATIVE } from '@finaswap/sdk'
 import { ethers } from 'ethers'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useBentoBoxContract } from './useContract'

@@ -1,4 +1,4 @@
-import { ChainId, Currency, KASHI_ADDRESS, NATIVE, Token, USDC, WNATIVE } from '@sushiswap/sdk'
+import { ChainId, Currency, KASHI_ADDRESS, NATIVE, Token, USDC, WNATIVE } from '@finaswap/sdk'
 import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react'
 import { ZERO, e10, maximum, minimum } from '../../functions/math'
 import {
@@ -14,7 +14,7 @@ import { useBentoBoxContract, useBoringHelperContract } from '../../hooks/useCon
 
 import { BigNumber } from '@ethersproject/bignumber'
 import Fraction from '../../entities/Fraction'
-import { bentobox } from '@sushiswap/sushi-data'
+import { bentobox } from '@finaswap/fina-data'
 import { ethers } from 'ethers'
 import { getCurrency } from '../../functions/currency'
 import { getOracle } from '../../entities/Oracle'

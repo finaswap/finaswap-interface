@@ -18,7 +18,7 @@ import {
   TIMELOCK_ADDRESS,
   WNATIVE,
   ZAPPER_ADDRESS,
-} from '@sushiswap/sdk'
+} from '@finaswap/sdk'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS,
@@ -57,7 +57,7 @@ import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import PENDING_ABI from '../constants/abis/pending.json'
 import ROUTER_ABI from '../constants/abis/router.json'
 import SAAVE_ABI from '../constants/abis/saave.json'
-import SUSHIROLL_ABI from '@sushiswap/core/abi/SushiRoll.json'
+import SUSHIROLL_ABI from '@finaswap/core/abi/FinaMove.json'
 import SUSHISWAP_TWAP_ORACLE_ABI from '../constants/abis/sushiswap-slp-oracle.json'
 import SUSHI_ABI from '../constants/abis/sushi.json'
 import TIMELOCK_ABI from '../constants/abis/timelock.json'

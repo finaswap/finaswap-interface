@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Token } from '@sushiswap/sdk'
+import { Currency, CurrencyAmount, Token } from '@finaswap/sdk'
 
 import { useCallback } from 'react'
 import { useSushiBarContract } from '../hooks/useContract'

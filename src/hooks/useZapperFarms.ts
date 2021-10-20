@@ -5,7 +5,7 @@ import Fraction from '../entities/Fraction'
 import { POOL_DENY } from '../constants'
 import orderBy from 'lodash/orderBy'
 import range from 'lodash/range'
-import sushiData from '@sushiswap/sushi-data'
+import sushiData from '@finaswap/fina-data'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useBoringHelperContract } from './useContract'
 

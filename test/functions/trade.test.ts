@@ -1,4 +1,4 @@
-import { ChainId, Token, TokenAmount } from '@sushiswap/sdk'
+import { ChainId, Token, TokenAmount } from '@finaswap/sdk'
 import {
     calculateGasMargin,
     calculateSlippageAmount,

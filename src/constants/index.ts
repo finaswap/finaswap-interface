@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent } from '@sushiswap/sdk'
+import { ChainId, JSBI, Percent } from '@finaswap/sdk'
 import { binance, fortmatic, injected, portis, torus, walletconnect, walletlink } from '../connectors'
 
 import { AbstractConnector } from '@web3-react/abstract-connector'

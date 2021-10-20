@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { CRXSUSHI, SUSHI } from '../../../constants'
-import { ChainId, SUSHI_ADDRESS, Token } from '@sushiswap/sdk'
+import { ChainId, SUSHI_ADDRESS, Token } from '@finaswap/sdk'
 import { e10, tryParseAmount } from '../../../functions'
 import { useBentoBalance } from '../../bentobox/hooks'
 import { useActiveWeb3React, useZenkoContract } from '../../../hooks'

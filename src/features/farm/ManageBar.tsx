@@ -22,7 +22,7 @@ import {
   Token,
   USDC,
   ZERO,
-} from '@sushiswap/sdk'
+} from '@finaswap/sdk'
 import { getAddress } from '@ethersproject/address'
 import { Chef, PairType } from './enum'
 import { useKashiPair } from '../lending/context'

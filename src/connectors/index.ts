@@ -1,5 +1,5 @@
 import { BscConnector } from '@binance-chain/bsc-connector'
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from '@finaswap/sdk'
 import { FortmaticConnector } from './Fortmatic'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { NetworkConnector } from './NetworkConnector'
