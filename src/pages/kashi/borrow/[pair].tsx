@@ -242,7 +242,7 @@ const PairLayout = ({ children }) => {
                 />
               </div>
             </div>
-            {pair && pair.oracle.name === 'SushiSwap' && (
+            {pair && pair.oracle.name === 'FinaSwap' && (
               <>
                 <div className="flex justify-between pt-3">
                   <div className="text-xl text-high-emphesis">{i18n._(t`SLP`)}</div>

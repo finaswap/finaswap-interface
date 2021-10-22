@@ -142,7 +142,7 @@ function MyApp({
           content="Be a DeFi Chef with Sushi. Swap, earn, stack yields, lend, borrow, leverage all on one decentralized, community driven platform. Welcome home to DeFi"
         />
         <meta key="twitter:image" name="twitter:image" content="https://app.sushi.com/icons/icon-192x192.png" />
-        <meta key="twitter:creator" name="twitter:creator" content="@SushiSwap" />
+        <meta key="twitter:creator" name="twitter:creator" content="@FinaSwap" />
         <meta key="og:type" property="og:type" content="website" />
         <meta key="og:site_name" property="og:site_name" content="FINA App" />
         <meta key="og:url" property="og:url" content="https://app.sushi.com" />

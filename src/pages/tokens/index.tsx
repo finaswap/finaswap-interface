@@ -6,7 +6,7 @@ export default function Tokens() {
     <Container id="tokens-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
       <Head>
         <title>Tokens | Sushi</title>
-        <meta key="description" name="description" content="SushiSwap tokens." />
+        <meta key="description" name="description" content="FinaSwap tokens." />
       </Head>
     </Container>
   )

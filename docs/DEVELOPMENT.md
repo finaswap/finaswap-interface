@@ -2,7 +2,7 @@
 
 ## Linking the SDK
 
-The SushiSwap SDK is used heavily throughout the Sushi Interface. You might like to clone this library and link it for various reasons, such as debugging, extracting, or even further developing the SDK.
+The FinaSwap SDK is used heavily throughout the Sushi Interface. You might like to clone this library and link it for various reasons, such as debugging, extracting, or even further developing the SDK.
 
 ```sh
 git clone https://github.com/sushiswap/sushiswap-sdk.git && cd sushiswap-sdk && git checkout canary && yarn link
