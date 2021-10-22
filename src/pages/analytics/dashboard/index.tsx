@@ -1,4 +1,4 @@
-import { useBlock, useEthPrice, useNativePrice, useSushiPairs, useTokens } from '../../../services/graph'
+import { useBlock, useEthPrice, useNativePrice, useFinaPairs, useTokens } from '../../../services/graph'
 import { useMemo, useState } from 'react'
 
 import AnalyticsContainer from '../../../features/analytics/AnalyticsContainer'
@@ -21,9 +21,9 @@ export default function Dashboard(): JSX.Element {
   const block1w = useBlock({ daysAgo: 7, chainId })
 
   // For Top Pairs
-  const pairs = useSushiPairs({ chainId })
-  const pairs1d = useSushiPairs({ block: block1d, chainId })
-  const pairs1w = useSushiPairs({ block: block1w, chainId })
+  const pairs = useFinaPairs({ chainId })
+  const pairs1d = useFinaPairs({ block: block1d, chainId })
+  const pairs1w = useFinaPairs({ block: block1w, chainId })
 
   const pairsFormatted = useMemo(
     () =>
@@ -57,7 +57,7 @@ export default function Dashboard(): JSX.Element {
             token1: farm.pair.token1,
             address: farm.pair.id,
             name: farm.pair.symbol ?? `${farm.pair.token0.symbol}-${farm.pair.token1.symbol}`,
-            type: farm.pair.symbol ? 'Kashi Farm' : 'Sushi Farm',
+            type: farm.pair.symbol ? 'Kashi Farm' : 'Fina Farm',
           },
           rewards: farm.rewards,
           liquidity: farm.tvl,
@@ -153,7 +153,7 @@ export default function Dashboard(): JSX.Element {
       <Background background="dashboard">
         <div className="grid items-center justify-between grid-cols-2">
           <div>
-            <div className="text-3xl font-bold text-high-emphesis">Sushi Analytics</div>
+            <div className="text-3xl font-bold text-high-emphesis">Fina Analytics</div>
             <div className="">
               Dive deeper in the analytics of sushi bar,
               <br /> pools, pairs and tokens.

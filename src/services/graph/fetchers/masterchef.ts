@@ -1,6 +1,6 @@
 import {
   masterChefV1PairAddressesQuery,
-  masterChefV1SushiPerBlockQuery,
+  masterChefV1FinaPerBlockQuery,
   masterChefV1TotalAllocPointQuery,
   masterChefV2PairAddressesQuery,
   miniChefPairAddressesQuery,
@@ -45,10 +45,10 @@ export const getMasterChefV1TotalAllocPoint = async () => {
   return totalAllocPoint
 }
 
-export const getMasterChefV1SushiPerBlock = async () => {
+export const getMasterChefV1FinaPerBlock = async () => {
   const {
     masterChef: { sushiPerBlock },
-  } = await masterChefV1(masterChefV1SushiPerBlockQuery)
+  } = await masterChefV1(masterChefV1FinaPerBlockQuery)
   return sushiPerBlock / 1e18
 }
 

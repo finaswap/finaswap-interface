@@ -41,15 +41,15 @@ interface State {
     | {
         ethBalance: BigNumber
         sushiBalance: BigNumber
-        sushiBarBalance: BigNumber
+        finaLoungeBalance: BigNumber
         xsushiBalance: BigNumber
         xsushiSupply: BigNumber
-        sushiBarAllowance: BigNumber
+        finaLoungeAllowance: BigNumber
         factories: any[]
         ethRate: BigNumber
         sushiRate: BigNumber
         btcRate: BigNumber
-        pendingSushi: BigNumber
+        pendingFina: BigNumber
         blockTimeStamp: BigNumber
         masterContractApproved: boolean[]
       }
@@ -61,15 +61,15 @@ const initialState: State = {
   info: {
     ethBalance: ZERO,
     sushiBalance: ZERO,
-    sushiBarBalance: ZERO,
+    finaLoungeBalance: ZERO,
     xsushiBalance: ZERO,
     xsushiSupply: ZERO,
-    sushiBarAllowance: ZERO,
+    finaLoungeAllowance: ZERO,
     factories: [],
     ethRate: ZERO,
     sushiRate: ZERO,
     btcRate: ZERO,
-    pendingSushi: ZERO,
+    pendingFina: ZERO,
     blockTimeStamp: ZERO,
     masterContractApproved: [],
   },

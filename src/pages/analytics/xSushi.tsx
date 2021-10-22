@@ -19,7 +19,7 @@ import { useBar, useBarHistory } from '../../services/graph/hooks/bar'
 import ColoredNumber from '../../features/analytics/ColoredNumber'
 import { XFINA } from '../../config/tokens'
 
-export default function XSushi() {
+export default function XFina() {
   const block1d = useBlock({ daysAgo: 1, chainId: ChainId.MAINNET })
 
   const exchange = useFactory({ chainId: ChainId.MAINNET })
@@ -30,22 +30,22 @@ export default function XSushi() {
   const ethPrice = useNativePrice({ chainId: ChainId.MAINNET })
   const ethPrice1d = useNativePrice({ block: block1d, chainId: ChainId.MAINNET, shouldFetch: !!block1d })
 
-  const xSushi = useTokens({ chainId: ChainId.MAINNET, subset: [XFINA.address] })?.[0]
-  const xSushi1d = useTokens({ block: block1d, chainId: ChainId.MAINNET, subset: [XFINA.address] })?.[0]
+  const xFina = useTokens({ chainId: ChainId.MAINNET, subset: [XFINA.address] })?.[0]
+  const xFina1d = useTokens({ block: block1d, chainId: ChainId.MAINNET, subset: [XFINA.address] })?.[0]
   const sushiDayData = useTokenDayData({ token: FINA_ADDRESS['1'], chainId: ChainId.MAINNET })
 
   const bar = useBar()
   const bar1d = useBar({ block: block1d, shouldFetch: !!block1d })
   const barHistory = useBarHistory()
 
-  const [xSushiPrice, xSushiMarketcap] = [
-    xSushi?.derivedETH * ethPrice,
-    xSushi?.derivedETH * ethPrice * bar?.totalSupply,
+  const [xFinaPrice, xFinaMarketcap] = [
+    xFina?.derivedETH * ethPrice,
+    xFina?.derivedETH * ethPrice * bar?.totalSupply,
   ]
 
-  const [xSushiPrice1d, xSushiMarketcap1d] = [
-    xSushi1d?.derivedETH * ethPrice1d,
-    xSushi1d?.derivedETH * ethPrice1d * bar1d?.totalSupply,
+  const [xFinaPrice1d, xFinaMarketcap1d] = [
+    xFina1d?.derivedETH * ethPrice1d,
+    xFina1d?.derivedETH * ethPrice1d * bar1d?.totalSupply,
   ]
 
   const data = useMemo(
@@ -55,15 +55,15 @@ export default function XSushi() {
             const exchangeDay = dayData.find((day) => day.date === barDay.date)
             const sushiDay = sushiDayData.find((day) => day.date === barDay.date)
 
-            const totalSushiStakedUSD = barDay.xSushiSupply * barDay.ratio * sushiDay.priceUSD
+            const totalFinaStakedUSD = barDay.xFinaSupply * barDay.ratio * sushiDay.priceUSD
 
             const APR =
-              totalSushiStakedUSD !== 0 ? ((exchangeDay.volumeUSD * 0.0005 * 365) / totalSushiStakedUSD) * 100 : 0
+              totalFinaStakedUSD !== 0 ? ((exchangeDay.volumeUSD * 0.0005 * 365) / totalFinaStakedUSD) * 100 : 0
 
             return {
               APR: APR,
               APY: aprToApy(APR, 365),
-              xSushiSupply: barDay.xSushiSupply,
+              xFinaSupply: barDay.xFinaSupply,
               date: barDay.date,
               feesReceived: exchangeDay.volumeUSD * 0.0005,
               sushiStakedUSD: barDay.sushiStakedUSD,
@@ -75,7 +75,7 @@ export default function XSushi() {
   )
 
   const APY1d = aprToApy(
-    (((exchange?.volumeUSD - exchange1d?.volumeUSD) * 0.0005 * 365.25) / (bar?.totalSupply * xSushiPrice)) * 100 ?? 0
+    (((exchange?.volumeUSD - exchange1d?.volumeUSD) * 0.0005 * 365.25) / (bar?.totalSupply * xFinaPrice)) * 100 ?? 0
   )
   const APY1w = aprToApy(data.slice(-7).reduce((acc, day) => (acc += day.APY), 0) / 7)
 
@@ -104,7 +104,7 @@ export default function XSushi() {
         ],
       },
       {
-        labels: ['Sushi Staked (USD)', 'Sushi Harvested (USD)'],
+        labels: ['Fina Staked (USD)', 'Fina Harvested (USD)'],
         note: '/ day',
         data: [
           data.map((d) => ({
@@ -118,11 +118,11 @@ export default function XSushi() {
         ],
       },
       {
-        title: 'xSushi Total Supply',
+        title: 'xFina Total Supply',
         data: [
           data.map((d) => ({
             date: d.date * 1000,
-            value: d.xSushiSupply,
+            value: d.xFinaSupply,
           })),
         ],
       },
@@ -135,24 +135,24 @@ export default function XSushi() {
       <Background background="bar">
         <div className="grid items-center justify-between grid-cols-1 gap-x-4 gap-y-2 md:grid-cols-2">
           <div className="space-y-5">
-            <div className="text-3xl font-bold text-high-emphesis">xSushi</div>
-            <div>Find out all about xSushi here.</div>
+            <div className="text-3xl font-bold text-high-emphesis">xFina</div>
+            <div>Find out all about xFina here.</div>
           </div>
           <div className="flex space-x-12">
             <div className="flex flex-col">
               <div>Price</div>
               <div className="flex items-center space-x-2">
-                <div className="text-lg font-medium text-high-emphesis">{formatNumber(xSushiPrice ?? 0, true)}</div>
-                <ColoredNumber number={(xSushiPrice / xSushiPrice1d) * 100 - 100} percent={true} />
+                <div className="text-lg font-medium text-high-emphesis">{formatNumber(xFinaPrice ?? 0, true)}</div>
+                <ColoredNumber number={(xFinaPrice / xFinaPrice1d) * 100 - 100} percent={true} />
               </div>
             </div>
             <div className="flex flex-col">
               <div>Market Cap</div>
               <div className="flex items-center space-x-2">
                 <div className="text-lg font-medium text-high-emphesis">
-                  {formatNumber(xSushiMarketcap ?? 0, true, false)}
+                  {formatNumber(xFinaMarketcap ?? 0, true, false)}
                 </div>
-                <ColoredNumber number={(xSushiMarketcap / xSushiMarketcap1d) * 100 - 100} percent={true} />
+                <ColoredNumber number={(xFinaMarketcap / xFinaMarketcap1d) * 100 - 100} percent={true} />
               </div>
             </div>
           </div>

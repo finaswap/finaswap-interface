@@ -16,8 +16,8 @@ import { useTokenBalances } from '../../wallet/hooks'
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
   name: i18n._(t`FINA → Bento`),
   steps: [i18n._(t`FINA`), i18n._(t`xFINA`), i18n._(t`BentoBox`)],
-  zapMethod: 'stakeSushiToBento',
-  unzapMethod: 'unstakeSushiFromBento',
+  zapMethod: 'stakeFinaToBento',
+  unzapMethod: 'unstakeFinaFromBento',
   description: i18n._(t`Stake FINA for xFINA and deposit into BentoBox in one click. xFINA in BentoBox is automatically
                 invested into a passive yield strategy, and can be lent or used as collateral for borrowing in Kashi.`),
   inputSymbol: i18n._(t`FINA`),
@@ -39,16 +39,16 @@ export const tokenDefinitions: StrategyTokenDefinitions = {
   },
 }
 
-const useStakeSushiToBentoStrategy = (): StrategyHook => {
+const useStakeFinaToBentoStrategy = (): StrategyHook => {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
   const balances = useTokenBalances(account, [FINA[ChainId.MAINNET], XFINA])
-  const xSushiBentoBalance = useBentoBalance(XFINA.address)
+  const xFinaBentoBalance = useBentoBalance(XFINA.address)
 
   // Strategy ends in BentoBox so use BaseBentoBox strategy
   const general = useMemo(() => GENERAL(i18n), [i18n])
   const baseStrategy = useBaseStrategy({
-    id: 'stakeSushiToBentoStrategy',
+    id: 'stakeFinaToBentoStrategy',
     general,
     tokenDefinitions,
   })
@@ -61,9 +61,9 @@ const useStakeSushiToBentoStrategy = (): StrategyHook => {
 
     setBalances({
       inputTokenBalance: balances[FINA[ChainId.MAINNET].address],
-      outputTokenBalance: tryParseAmount(xSushiBentoBalance?.value?.toFixed(18) || '0', XFINA),
+      outputTokenBalance: tryParseAmount(xFinaBentoBalance?.value?.toFixed(18) || '0', XFINA),
     })
-  }, [balances, setBalances, xSushiBentoBalance?.value])
+  }, [balances, setBalances, xFinaBentoBalance?.value])
 
   return useMemo(
     () => ({
@@ -74,4 +74,4 @@ const useStakeSushiToBentoStrategy = (): StrategyHook => {
   )
 }
 
-export default useStakeSushiToBentoStrategy
+export default useStakeFinaToBentoStrategy

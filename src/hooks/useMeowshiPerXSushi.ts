@@ -4,7 +4,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { XFINA } from '../config/tokens'
 import { useBentoBoxContract } from './useContract'
 
-export default function useMeowshiPerXSushi() {
+export default function useMeowshiPerXFina() {
   const bentoboxContract = useBentoBoxContract()
   const [state, setState] = useState<[BigNumber, BigNumber]>([BigNumber.from('0'), BigNumber.from('0')])
 

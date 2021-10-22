@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import AnalyticsContainer from '../../../features/analytics/AnalyticsContainer'
 import { useRouter } from 'next/router'
 import DoubleCurrencyLogo from '../../../components/DoubleLogo'
-import { useBlock, useNativePrice, useSushiPairs, useTransactions } from '../../../services/graph'
+import { useBlock, useNativePrice, useFinaPairs, useTransactions } from '../../../services/graph'
 import { useCurrency } from '../../../hooks/Tokens'
 import { times } from 'lodash'
 import CurrencyLogo from '../../../components/CurrencyLogo'
@@ -30,9 +30,9 @@ export default function Pair() {
   const block1d = useBlock({ daysAgo: 1, chainId })
   const block2d = useBlock({ daysAgo: 2, chainId })
 
-  const pair = useSushiPairs({ subset: [id], chainId })?.[0]
-  const pair1d = useSushiPairs({ subset: [id], block: block1d, shouldFetch: !!block1d, chainId })?.[0]
-  const pair2d = useSushiPairs({ subset: [id], block: block2d, shouldFetch: !!block2d, chainId })?.[0]
+  const pair = useFinaPairs({ subset: [id], chainId })?.[0]
+  const pair1d = useFinaPairs({ subset: [id], block: block1d, shouldFetch: !!block1d, chainId })?.[0]
+  const pair2d = useFinaPairs({ subset: [id], block: block2d, shouldFetch: !!block2d, chainId })?.[0]
 
   const nativePrice = useNativePrice({ chainId })
 
@@ -128,7 +128,7 @@ export default function Pair() {
               <div className="text-lg font-bold text-high-emphesis">
                 {pair?.token0?.symbol}-{pair?.token1?.symbol}
               </div>
-              <div className="text-xs text-secondary">Sushi Liquidity Pool</div>
+              <div className="text-xs text-secondary">Fina Liquidity Pool</div>
             </div>
             <div className="rounded-3xl text-sm bg-[#414a6c] py-px px-2 flex items-center space-x-1">
               <div>{shortenAddress(id)}</div>

@@ -25,7 +25,7 @@ import { setStrategy } from '../../state/inari/actions'
 import { t } from '@lingui/macro'
 import { useAppDispatch } from '../../state/hooks'
 import { useLingui } from '@lingui/react'
-import useStakeSushiToBentoStrategy from '../../state/inari/strategies/useStakeSushiToBentoStrategy'
+import useStakeFinaToBentoStrategy from '../../state/inari/strategies/useStakeFinaToBentoStrategy'
 
 const Inari = () => {
   const { i18n } = useLingui()
@@ -35,9 +35,9 @@ const Inari = () => {
   const dispatch = useAppDispatch()
 
   // Set initial strategy
-  const stakeSushiToBentoStrategy = useStakeSushiToBentoStrategy()
+  const stakeFinaToBentoStrategy = useStakeFinaToBentoStrategy()
   useEffect(() => {
-    dispatch(setStrategy(stakeSushiToBentoStrategy))
+    dispatch(setStrategy(stakeFinaToBentoStrategy))
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -45,7 +45,7 @@ const Inari = () => {
   return (
     <>
       <Head>
-        <title>Inari | Sushi</title>
+        <title>Inari | Fina</title>
         <meta name="description" content="Inari..." />
       </Head>
       <Container maxWidth="5xl" className="flex flex-col gap-8 px-4 py-8">

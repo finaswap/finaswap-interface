@@ -6,7 +6,7 @@ import {
   useKashiPairs,
   useLiquidityPositions,
   useNativePrice,
-  useSushiPairs,
+  useFinaPairs,
   useTokens,
 } from '../../../services/graph'
 
@@ -31,7 +31,7 @@ export function useUserPairs(chainId = undefined) {
   chainId = chainId ?? chainIdSelected
 
   const userPairs = useLiquidityPositions({ user: account, chainId })
-  const pairsFiltered = useSushiPairs({
+  const pairsFiltered = useFinaPairs({
     subset: userPairs.map((pair) => pair.pair.id),
     chainId,
     shouldFetch: !!userPairs,
@@ -71,7 +71,7 @@ export function useUserFarms(chainId = undefined) {
 
   const farmAddresses = useMemo(() => farms.map((farm) => farm.pair), [farms])
 
-  const sushiPairs = useSushiPairs({ subset: farmAddresses, chainId, shouldFetch: !!farmAddresses })
+  const sushiPairs = useFinaPairs({ subset: farmAddresses, chainId, shouldFetch: !!farmAddresses })
   const kashiPairs = useKashiPairs({ subset: farmAddresses, chainId, shouldFetch: !!farmAddresses })
 
   const nativePrice = useNativePrice({ chainId })

@@ -1,11 +1,11 @@
 import { useAppSelector } from '../hooks'
 import { Token } from '@finaswap/sdk'
 import { tryParseAmount } from '../../functions'
-import useStakeSushiToBentoStrategy from './strategies/useStakeSushiToBentoStrategy'
+import useStakeFinaToBentoStrategy from './strategies/useStakeFinaToBentoStrategy'
 import { DerivedInariState, InariState } from './types'
-import useStakeSushiToCreamStrategy from './strategies/useStakeSushiToCreamStrategy'
-import useStakeSushiToCreamToBentoStrategy from './strategies/useStakeSushiToCreamToBentoStrategy'
-import useStakeSushiToAaveStrategy from './strategies/useStakeSushiToAaveStrategy'
+import useStakeFinaToCreamStrategy from './strategies/useStakeFinaToCreamStrategy'
+import useStakeFinaToCreamToBentoStrategy from './strategies/useStakeFinaToCreamToBentoStrategy'
+import useStakeFinaToAaveStrategy from './strategies/useStakeFinaToAaveStrategy'
 import { useMemo } from 'react'
 
 export function useInariState(): InariState {
@@ -64,16 +64,16 @@ export function useSelectedInariStrategy() {
 
 // Use this hook to register all strategies
 export function useInariStrategies() {
-  const stakeSushiToBentoStrategy = useStakeSushiToBentoStrategy()
-  const stakeSushiToCreamStrategy = useStakeSushiToCreamStrategy()
-  const stakeSushiToAaveStrategy = useStakeSushiToAaveStrategy()
+  const stakeFinaToBentoStrategy = useStakeFinaToBentoStrategy()
+  const stakeFinaToCreamStrategy = useStakeFinaToCreamStrategy()
+  const stakeFinaToAaveStrategy = useStakeFinaToAaveStrategy()
 
   return useMemo(
     () => ({
-      [stakeSushiToBentoStrategy.id]: stakeSushiToBentoStrategy,
-      [stakeSushiToCreamStrategy.id]: stakeSushiToCreamStrategy,
-      [stakeSushiToAaveStrategy.id]: stakeSushiToAaveStrategy,
+      [stakeFinaToBentoStrategy.id]: stakeFinaToBentoStrategy,
+      [stakeFinaToCreamStrategy.id]: stakeFinaToCreamStrategy,
+      [stakeFinaToAaveStrategy.id]: stakeFinaToAaveStrategy,
     }),
-    [stakeSushiToAaveStrategy, stakeSushiToBentoStrategy, stakeSushiToCreamStrategy]
+    [stakeFinaToAaveStrategy, stakeFinaToBentoStrategy, stakeFinaToCreamStrategy]
   )
 }

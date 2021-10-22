@@ -70,7 +70,7 @@ export default function Vesting() {
   useEffect(() => {
     const fetchLockup = async () => {
       if (account) {
-        fetch('https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/amounts-10959148-12171394.json')
+        fetch('https://raw.githubusercontent.com/finaswap/finaswap-vesting/master/amounts-10959148-12171394.json')
           .then((response) => response.json())
           .then((data) => {
             // console.log('vesting:', data)
@@ -93,17 +93,17 @@ export default function Vesting() {
 
   let vault = ''
   if (!pendingTreasurySignature && Number(unclaimedAmount?.toFixed(8)) > 0) {
-    vault = 'https://raw.githubusercontent.com/sushiswap/sushi-content/master/images/sushi-vault-reverse.png'
+    vault = 'https://raw.githubusercontent.com/finaswap/finaswap-content/master/images/sushi-vault-reverse.png'
   } else if (!pendingTreasurySignature && Number(unclaimedAmount?.toFixed(8)) <= 0) {
-    vault = 'https://raw.githubusercontent.com/sushiswap/sushi-content/master/images/vesting-safe-off.png'
+    vault = 'https://raw.githubusercontent.com/finaswap/finaswap-content/master/images/vesting-safe-off.png'
   } else if (pendingTreasurySignature) {
-    vault = 'https://raw.githubusercontent.com/sushiswap/sushi-content/master/images/vesting-safe-closed.png'
+    vault = 'https://raw.githubusercontent.com/finaswap/finaswap-content/master/images/vesting-safe-closed.png'
   }
 
   return (
     <Container id="vesting-page" className="py-4 md:py-8 lg:py-12 m-auto w-full max-w-[900px]">
       <Head>
-        <title>Vesting | Sushi</title>
+        <title>Vesting | Fina</title>
         <meta key="description" name="description" content="FinaSwap vesting..." />
       </Head>
       <div className="flex px-0 sm:px-4 md:flex-row md:space-x-10 lg:space-x-20 md:px-10">
@@ -134,7 +134,7 @@ export default function Vesting() {
                 <br />
                 <br />
                 {i18n._(t`Additional records and weekly merkle updates can be found on`)}{' '}
-                <ExternalLink href="https://github.com/sushiswap/sushi-vesting">Github</ExternalLink>
+                <ExternalLink href="https://github.com/finaswap/finaswap-vesting">Github</ExternalLink>
               </>
             </div>
           </div>

@@ -18,8 +18,8 @@ import { tryParseAmount } from '../../functions/parse'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
 import useSWR from 'swr'
-import useSushiBar from '../../hooks/useSushiBar'
-import { useSushiPrice } from '../../services/graph'
+import useFinaLounge from '../../hooks/useFinaLounge'
+import { useFinaPrice } from '../../services/graph'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { classNames } from '../../functions'
@@ -57,15 +57,15 @@ export default function Stake() {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
   const sushiBalance = useTokenBalance(account ?? undefined, FINA[ChainId.MAINNET])
-  const xSushiBalance = useTokenBalance(account ?? undefined, XFINA)
+  const xFinaBalance = useTokenBalance(account ?? undefined, XFINA)
 
-  const sushiPrice = useSushiPrice()
+  const sushiPrice = useFinaPrice()
 
-  const { enter, leave } = useSushiBar()
+  const { enter, leave } = useFinaLounge()
 
   const { data } = useSWR(`{bar(id: "0x8798249c2e607446efb7ad49ec89dd1865ff4272") {ratio, totalSupply}}`, fetcher)
 
-  const xSushiPerSushi = parseFloat(data?.bar?.ratio)
+  const xFinaPerFina = parseFloat(data?.bar?.ratio)
 
   const walletConnected = !!account
   const toggleWalletModal = useWalletModalToggle()
@@ -76,7 +76,7 @@ export default function Stake() {
   const [input, setInput] = useState<string>('')
   const [usingBalance, setUsingBalance] = useState(false)
 
-  const balance = activeTab === 0 ? sushiBalance : xSushiBalance
+  const balance = activeTab === 0 ? sushiBalance : xFinaBalance
 
   const formattedBalance = balance?.toSignificant(4)
 
@@ -157,7 +157,7 @@ export default function Stake() {
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
       <Head>
-        <title key="title">Stake | Sushi</title>
+        <title key="title">Stake | Fina</title>
         <meta
           key="description"
           name="description"
@@ -188,12 +188,12 @@ export default function Stake() {
                 {i18n._(t`Maximize yield by staking FINA for xFINA`)}
               </div>
               {/* <div className="self-start pl-6 pr-3 mb-1 min-w-max md:hidden">
-                                <img src={XSushiSignSmall} alt="xsushi sign" />
+                                <img src={XFinaSignSmall} alt="xsushi sign" />
                             </div> */}
             </div>
             <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-gray-500 md:text-base md:mb-4 md:pr-0">
               {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as FINA
-                                proportional to your share of the SushiBar. When your FINA is staked into the SushiBar, you receive
+                                proportional to your share of the FinaLounge. When your FINA is staked into the FinaLounge, you receive
                                 xFINA in return for voting rights and a fully composable token that can interact with other protocols.
                                 Your xFINA is continuously compounding, when you unstake you will receive all the originally deposited
                                 FINA and any additional from fees.`)}
@@ -282,7 +282,7 @@ export default function Stake() {
                     {activeTab === 0 ? i18n._(t`Stake FINA`) : i18n._(t`Unstake`)}
                   </p>
                   <div className="border-gradient-r-pink-red-light-brown-dark-pink-red border-transparent border-solid border rounded-3xl px-4 md:px-3.5 py-1.5 md:py-0.5 text-high-emphesis text-xs font-medium md:text-base md:font-normal">
-                    {`1 xFINA = ${xSushiPerSushi.toFixed(4)} FINA`}
+                    {`1 xFINA = ${xFinaPerFina.toFixed(4)} FINA`}
                   </div>
                 </div>
 
@@ -393,7 +393,7 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {xSushiBalance ? xSushiBalance.toSignificant(4) : '-'}
+                        {xFinaBalance ? xFinaBalance.toSignificant(4) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">xFINA</p>
                     </div>
@@ -447,7 +447,7 @@ export default function Stake() {
                                 text-sm font-bold cursor-pointer
                             `}
                     >
-                      {i18n._(t`Your SushiBar Stats`)}
+                      {i18n._(t`Your FinaLounge Stats`)}
                     </a>
                   )}
                 </div>

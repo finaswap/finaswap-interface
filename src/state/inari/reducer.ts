@@ -2,10 +2,10 @@ import { setStrategy, setValues, setZapIn } from './actions'
 
 import { InariState } from './types'
 import { createReducer } from '@reduxjs/toolkit'
-import { tokenDefinitions } from './strategies/useStakeSushiToBentoStrategy'
+import { tokenDefinitions } from './strategies/useStakeFinaToBentoStrategy'
 
 const initialState: InariState = {
-  id: 'stakeSushiToBentoStrategy',
+  id: 'stakeFinaToBentoStrategy',
   zapIn: true,
   inputValue: '',
   outputValue: '',

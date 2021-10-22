@@ -7,7 +7,7 @@ export const miniChefPoolsQuery = gql`
     $orderBy: String! = "id"
     $orderDirection: String! = "desc"
     $block: Block_height
-    $where: Pool_filter! = { allocPoint_gt: 0, accSushiPerShare_gt: 0 }
+    $where: Pool_filter! = { allocPoint_gt: 0, accFinaPerShare_gt: 0 }
   ) {
     pools(
       first: $first
@@ -26,7 +26,7 @@ export const miniChefPoolsQuery = gql`
       }
       allocPoint
       lastRewardTime
-      accSushiPerShare
+      accFinaPerShare
       slpBalance
       userCount
       miniChef {
@@ -44,12 +44,12 @@ export const miniChefPairAddressesQuery = gql`
     $skip: Int! = 0
     $orderBy: String! = "id"
     $orderDirection: String! = "desc"
-    $where: Pool_filter! = { allocPoint_gt: 0, accSushiPerShare_gt: 0 }
+    $where: Pool_filter! = { allocPoint_gt: 0, accFinaPerShare_gt: 0 }
   ) {
     pools(first: $first, skip: $skip, orderBy: $orderBy, orderDirection: $orderDirection, where: $where) {
       id
       allocPoint
-      accSushiPerShare
+      accFinaPerShare
       pair {
         id
       }

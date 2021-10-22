@@ -3,7 +3,7 @@ import {
   useBlock,
   useFarms,
   useNativePrice,
-  useSushiPairs,
+  useFinaPairs,
   useTokenDayData,
   useTokenPairs,
   useTokens,
@@ -96,7 +96,7 @@ export default function Token(): JSX.Element {
 
   // For Top Farms
   const farms = useFarms({ chainId })
-  const farmPairs = useSushiPairs({ subset: farms.map((farm) => farm.pair), shouldFetch: !!farms, chainId })
+  const farmPairs = useFinaPairs({ subset: farms.map((farm) => farm.pair), shouldFetch: !!farms, chainId })
   const farmsFormatted = useMemo(() => {
     return farmPairs
       ? farmPairs

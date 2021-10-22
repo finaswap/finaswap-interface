@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useMeowshiContract, useSushiBarContract, useSushiContract } from './useContract'
+import { useMeowshiContract, useFinaLoungeContract, useFinaContract } from './useContract'
 
 import { ApprovalState } from './useApproveCallback'
 import { BalanceProps } from './useTokenBalance'
@@ -12,8 +12,8 @@ import { useTransactionAdder } from '../state/transactions/hooks'
 const useMeowshi = (sushi: boolean) => {
   const { account } = useActiveWeb3React()
   const addTransaction = useTransactionAdder()
-  const sushiContract = useSushiContract(true)
-  const barContract = useSushiBarContract(true)
+  const sushiContract = useFinaContract(true)
+  const barContract = useFinaLoungeContract(true)
   const meowshiContract = useMeowshiContract(true)
   const [pendingApproval, setPendingApproval] = useState(false)
 
@@ -106,11 +106,11 @@ const useMeowshi = (sushi: boolean) => {
     [account, addTransaction, meowshiContract]
   )
 
-  const meowSushi = useCallback(
+  const meowFina = useCallback(
     async (amount: BalanceProps | undefined) => {
       if (amount?.value) {
         try {
-          const tx = await meowshiContract?.meowSushi(account, amount?.value)
+          const tx = await meowshiContract?.meowFina(account, amount?.value)
           addTransaction(tx, { summary: 'Enter Meowshi' })
           return tx
         } catch (e) {
@@ -121,11 +121,11 @@ const useMeowshi = (sushi: boolean) => {
     [account, addTransaction, meowshiContract]
   )
 
-  const unmeowSushi = useCallback(
+  const unmeowFina = useCallback(
     async (amount: BalanceProps | undefined) => {
       if (amount?.value) {
         try {
-          const tx = await meowshiContract?.unmeowSushi(account, amount?.value)
+          const tx = await meowshiContract?.unmeowFina(account, amount?.value)
           addTransaction(tx, { summary: 'Leave Meowshi' })
           return tx
         } catch (e) {
@@ -141,8 +141,8 @@ const useMeowshi = (sushi: boolean) => {
     approve,
     meow,
     unmeow,
-    meowSushi,
-    unmeowSushi,
+    meowFina,
+    unmeowFina,
   }
 }
 

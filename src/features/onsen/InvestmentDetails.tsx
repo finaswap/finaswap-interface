@@ -7,7 +7,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { CurrencyAmount, JSBI, Token, USDC, ZERO } from '@finaswap/sdk'
 import { getAddress } from '@ethersproject/address'
 import { PairType } from './enum'
-import { usePendingSushi, useUserInfo } from './hooks'
+import { usePendingFina, useUserInfo } from './hooks'
 import { easyAmount, formatNumber } from '../../functions'
 import { BigNumber } from '@ethersproject/bignumber'
 import usePendingReward from './usePendingReward'
@@ -59,7 +59,7 @@ const InvestmentDetails = ({ farm }) => {
     )
 
   const pendingReward = usePendingReward(farm)
-  const pendingSushi = usePendingSushi(farm)
+  const pendingFina = usePendingFina(farm)
 
   const positionFiatValue = CurrencyAmount.fromRawAmount(
     USDC[chainId],
@@ -73,7 +73,7 @@ const InvestmentDetails = ({ farm }) => {
   )
 
   const rewardValue =
-    (farm?.rewards?.[0]?.rewardPrice ?? 0) * Number(pendingSushi?.toExact() ?? 0) +
+    (farm?.rewards?.[0]?.rewardPrice ?? 0) * Number(pendingFina?.toExact() ?? 0) +
     (farm?.rewards?.[1]?.rewardPrice ?? 0) * Number(pendingReward ?? 0)
 
   async function onHarvest() {
@@ -132,7 +132,7 @@ const InvestmentDetails = ({ farm }) => {
       <div className="flex flex-col w-full space-y-4">
         <div className="flex items-end justify-between">
           <div className="text-lg font-bold cursor-pointer">{i18n._(t`Your Rewards`)}:</div>
-          {((pendingSushi && pendingSushi.greaterThan(ZERO)) || (pendingReward && Number(pendingReward) > 0)) && (
+          {((pendingFina && pendingFina.greaterThan(ZERO)) || (pendingReward && Number(pendingReward) > 0)) && (
             <button
               className="py-0.5 px-4 font-bold bg-transparent border border-transparent rounded cursor-pointer border-gradient-r-blue-pink-dark-800 whitespace-nowrap text-md"
               disabled={pendingTx}
@@ -155,7 +155,7 @@ const InvestmentDetails = ({ farm }) => {
                   layout="fixed"
                   alt={reward.token}
                 />
-                {i === 0 && <Typography>{formatNumber(pendingSushi?.toSignificant(6) ?? 0)}</Typography>}
+                {i === 0 && <Typography>{formatNumber(pendingFina?.toSignificant(6) ?? 0)}</Typography>}
                 {i === 1 && <Typography>{formatNumber(pendingReward)}</Typography>}
                 <Typography>{reward.token}</Typography>
               </div>

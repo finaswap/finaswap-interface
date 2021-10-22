@@ -63,7 +63,7 @@ export default function Me() {
   return (
     <Container id="user-page" className="py-4 space-y-3 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
-        <title>My FINA | Sushi</title>
+        <title>My FINA | Fina</title>
         <meta key="description" name="description" content="My FINA" />
       </Head>
       <div className="p-4 mb-3 space-y-3">

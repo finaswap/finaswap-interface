@@ -1,6 +1,6 @@
 import { ChainId } from '@finaswap/sdk'
 
-const Arbitrum = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/arbitrum.jpg'
+const Arbitrum = 'https://raw.githubusercontent.com/finaswap/icons/master/network/arbitrum.jpg'
 const Avalanche = '/images/networks/avalanche-network.jpg'
 const Bsc = '/images/networks/bsc-network.jpg'
 const Fantom = '/images/networks/fantom-network.jpg'
@@ -17,8 +17,8 @@ const Rinkeby = '/images/networks/rinkeby-network.jpg'
 const Ropsten = '/images/networks/ropsten-network.jpg'
 const xDai = '/images/networks/xdai-network.jpg'
 const Celo = '/images/networks/celo-network.jpg'
-const Palm = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/palm.jpg'
-const Moonriver = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/moonriver.jpg'
+const Palm = 'https://raw.githubusercontent.com/finaswap/icons/master/network/palm.jpg'
+const Moonriver = 'https://raw.githubusercontent.com/finaswap/icons/master/network/moonriver.jpg'
 
 export const NETWORK_ICON = {
   [ChainId.MAINNET]: Mainnet,

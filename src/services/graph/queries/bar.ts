@@ -6,14 +6,14 @@ export const barQuery = gql`
       id
       totalSupply
       ratio
-      xSushiMinted
-      xSushiBurned
+      xFinaMinted
+      xFinaBurned
       sushiStaked
       sushiStakedUSD
       sushiHarvested
       sushiHarvestedUSD
-      xSushiAge
-      xSushiAgeDestroyed
+      xFinaAge
+      xFinaAgeDestroyed
       # histories(first: 1000) {
       #   id
       #   date
@@ -22,11 +22,11 @@ export const barQuery = gql`
       #   sushiStakedUSD
       #   sushiHarvested
       #   sushiHarvestedUSD
-      #   xSushiAge
-      #   xSushiAgeDestroyed
-      #   xSushiMinted
-      #   xSushiBurned
-      #   xSushiSupply
+      #   xFinaAge
+      #   xFinaAgeDestroyed
+      #   xFinaMinted
+      #   xFinaBurned
+      #   xFinaSupply
       #   ratio
       # }
     }
@@ -43,11 +43,11 @@ export const barHistoriesQuery = gql`
       sushiStakedUSD
       sushiHarvested
       sushiHarvestedUSD
-      xSushiAge
-      xSushiAgeDestroyed
-      xSushiMinted
-      xSushiBurned
-      xSushiSupply
+      xFinaAge
+      xFinaAgeDestroyed
+      xFinaMinted
+      xFinaBurned
+      xFinaSupply
       ratio
     }
   }
@@ -61,16 +61,16 @@ export const barUserQuery = gql`
         totalSupply
         sushiStaked
       }
-      xSushi
+      xFina
       sushiStaked
       sushiStakedUSD
       sushiHarvested
       sushiHarvestedUSD
-      xSushiIn
-      xSushiOut
-      xSushiOffset
-      xSushiMinted
-      xSushiBurned
+      xFinaIn
+      xFinaOut
+      xFinaOffset
+      xFinaMinted
+      xFinaBurned
       sushiIn
       sushiOut
       usdIn

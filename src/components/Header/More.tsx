@@ -12,20 +12,20 @@ import NavLink from '../NavLink'
 const items = (i18n: I18n) => [
   {
     name: i18n._(t`Docs`),
-    description: i18n._(t`Documentation for users of Sushi.`),
+    description: i18n._(t`Documentation for users of Fina.`),
     href: 'https://docs.sushi.com',
     external: true,
   },
   {
     name: i18n._(t`Dev`),
-    description: i18n._(t`Documentation for developers of Sushi.`),
+    description: i18n._(t`Documentation for developers of Fina.`),
     href: 'https://dev.sushi.com',
     external: true,
   },
   {
     name: i18n._(t`Open Source`),
-    description: i18n._(t`Sushi is a supporter of Open Source.`),
-    href: 'https://github.com/sushiswap',
+    description: i18n._(t`Fina is a supporter of Open Source.`),
+    href: 'https://github.com/finaswap',
     external: true,
   },
   {

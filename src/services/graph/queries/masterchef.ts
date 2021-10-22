@@ -7,7 +7,7 @@ export const poolsQuery = gql`
     $orderBy: String! = "id"
     $orderDirection: String! = "desc"
     $block: Block_height
-    $where: Pool_filter! = { allocPoint_gt: 0, accSushiPerShare_gt: 0 }
+    $where: Pool_filter! = { allocPoint_gt: 0, accFinaPerShare_gt: 0 }
   ) {
     pools(
       first: $first
@@ -21,7 +21,7 @@ export const poolsQuery = gql`
       pair
       allocPoint
       lastRewardBlock
-      accSushiPerShare
+      accFinaPerShare
       balance
       userCount
       owner {
@@ -39,12 +39,12 @@ export const masterChefV1PairAddressesQuery = gql`
     $skip: Int! = 0
     $orderBy: String! = "id"
     $orderDirection: String! = "desc"
-    $where: Pool_filter! = { allocPoint_gt: 0, accSushiPerShare_gt: 0 }
+    $where: Pool_filter! = { allocPoint_gt: 0, accFinaPerShare_gt: 0 }
   ) {
     pools(first: $first, skip: $skip, orderBy: $orderBy, orderDirection: $orderDirection, where: $where) {
       id
       allocPoint
-      accSushiPerShare
+      accFinaPerShare
       pair {
         id
       }
@@ -61,8 +61,8 @@ export const masterChefV1TotalAllocPointQuery = gql`
   }
 `
 
-export const masterChefV1SushiPerBlockQuery = gql`
-  query masterChefV1SushiPerBlock($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+export const masterChefV1FinaPerBlockQuery = gql`
+  query masterChefV1FinaPerBlock($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
     masterChef(id: $id) {
       id
       sushiPerBlock

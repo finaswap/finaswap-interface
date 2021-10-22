@@ -43,7 +43,7 @@ export const MATIC: { [key: string]: Token } = {
   WETH: new Token(ChainId.MATIC, '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619', 18, 'WETH', 'Wrapped Ether'),
   USDT: new Token(ChainId.MATIC, '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 6, 'USDT', 'Tether USD'),
   TEL: new Token(ChainId.MATIC, '0xdF7837DE1F2Fa4631D716CF2502f8b230F1dcc32', 2, 'TEL', 'Telcoin'),
-  FINA: new Token(ChainId.MATIC, '0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a', 18, 'FINA', 'SushiToken'),
+  FINA: new Token(ChainId.MATIC, '0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a', 18, 'FINA', 'FinaToken'),
   AAVE: new Token(ChainId.MATIC, '0xD6DF932A45C0f255f85145f286eA0b292B21C90B', 18, 'AAVE', 'Aave'),
   FRAX: new Token(ChainId.MATIC, '0x104592a158490a9228070E0A8e5343B499e125D0', 18, 'FRAX', 'Frax'),
   FXS: new Token(ChainId.MATIC, '0x3e121107F6F22DA4911079845a470757aF4e1A1b', 18, 'FXS', 'Frax Share'),
@@ -189,7 +189,7 @@ export const XFINA_CALL = new Token(
 )
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC')
 
-export const XFINA = new Token(ChainId.MAINNET, '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272', 18, 'xFINA', 'SushiBar')
+export const XFINA = new Token(ChainId.MAINNET, '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272', 18, 'xFINA', 'FinaLounge')
 
 export const LIFT = new Token(ChainId.MAINNET, '0xf9209d900f7ad1DC45376a2caA61c78f6dEA53B6', 18, 'LIFT', 'LiftKitchen')
 export const LFBTC = new Token(
@@ -207,7 +207,7 @@ export const CRXFINA = new Token(
   '0x228619cca194fbe3ebeb2f835ec1ea5080dafbb2',
   8,
   'crXFINA',
-  'Cream SushiBar'
+  'Cream FinaLounge'
 )
 export const AXFINA = new Token(
   ChainId.MAINNET,
@@ -225,20 +225,20 @@ type ChainTokenMap = {
 
 // FINA
 export const FINA: ChainTokenMap = {
-  [ChainId.MAINNET]: new Token(ChainId.MAINNET, FINA_ADDRESS[ChainId.MAINNET], 18, 'FINA', 'SushiToken'),
-  [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, FINA_ADDRESS[ChainId.ROPSTEN], 18, 'FINA', 'SushiToken'),
-  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, FINA_ADDRESS[ChainId.RINKEBY], 18, 'FINA', 'SushiToken'),
-  [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, FINA_ADDRESS[ChainId.GÖRLI], 18, 'FINA', 'SushiToken'),
-  [ChainId.KOVAN]: new Token(ChainId.KOVAN, FINA_ADDRESS[ChainId.KOVAN], 18, 'FINA', 'SushiToken'),
-  [ChainId.MATIC]: new Token(ChainId.MATIC, FINA_ADDRESS[ChainId.MATIC], 18, 'FINA', 'SushiToken'),
-  [ChainId.FANTOM]: new Token(ChainId.FANTOM, FINA_ADDRESS[ChainId.FANTOM], 18, 'FINA', 'SushiToken'),
-  [ChainId.XDAI]: new Token(ChainId.XDAI, FINA_ADDRESS[ChainId.XDAI], 18, 'FINA', 'SushiToken'),
-  [ChainId.BSC]: new Token(ChainId.BSC, FINA_ADDRESS[ChainId.BSC], 18, 'FINA', 'SushiToken'),
-  [ChainId.ARBITRUM]: new Token(ChainId.ARBITRUM, FINA_ADDRESS[ChainId.ARBITRUM], 18, 'FINA', 'SushiToken'),
-  [ChainId.AVALANCHE]: new Token(ChainId.AVALANCHE, FINA_ADDRESS[ChainId.AVALANCHE], 18, 'FINA', 'SushiToken'),
-  [ChainId.OKEX]: new Token(ChainId.OKEX, FINA_ADDRESS[ChainId.OKEX], 18, 'FINA', 'SushiToken'),
-  [ChainId.HARMONY]: new Token(ChainId.HARMONY, FINA_ADDRESS[ChainId.HARMONY], 18, 'FINA', 'SushiToken'),
-  [ChainId.HECO]: new Token(ChainId.HECO, FINA_ADDRESS[ChainId.HECO], 18, 'FINA', 'SushiToken'),
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, FINA_ADDRESS[ChainId.MAINNET], 18, 'FINA', 'FinaToken'),
+  [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, FINA_ADDRESS[ChainId.ROPSTEN], 18, 'FINA', 'FinaToken'),
+  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, FINA_ADDRESS[ChainId.RINKEBY], 18, 'FINA', 'FinaToken'),
+  [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, FINA_ADDRESS[ChainId.GÖRLI], 18, 'FINA', 'FinaToken'),
+  [ChainId.KOVAN]: new Token(ChainId.KOVAN, FINA_ADDRESS[ChainId.KOVAN], 18, 'FINA', 'FinaToken'),
+  [ChainId.MATIC]: new Token(ChainId.MATIC, FINA_ADDRESS[ChainId.MATIC], 18, 'FINA', 'FinaToken'),
+  [ChainId.FANTOM]: new Token(ChainId.FANTOM, FINA_ADDRESS[ChainId.FANTOM], 18, 'FINA', 'FinaToken'),
+  [ChainId.XDAI]: new Token(ChainId.XDAI, FINA_ADDRESS[ChainId.XDAI], 18, 'FINA', 'FinaToken'),
+  [ChainId.BSC]: new Token(ChainId.BSC, FINA_ADDRESS[ChainId.BSC], 18, 'FINA', 'FinaToken'),
+  [ChainId.ARBITRUM]: new Token(ChainId.ARBITRUM, FINA_ADDRESS[ChainId.ARBITRUM], 18, 'FINA', 'FinaToken'),
+  [ChainId.AVALANCHE]: new Token(ChainId.AVALANCHE, FINA_ADDRESS[ChainId.AVALANCHE], 18, 'FINA', 'FinaToken'),
+  [ChainId.OKEX]: new Token(ChainId.OKEX, FINA_ADDRESS[ChainId.OKEX], 18, 'FINA', 'FinaToken'),
+  [ChainId.HARMONY]: new Token(ChainId.HARMONY, FINA_ADDRESS[ChainId.HARMONY], 18, 'FINA', 'FinaToken'),
+  [ChainId.HECO]: new Token(ChainId.HECO, FINA_ADDRESS[ChainId.HECO], 18, 'FINA', 'FinaToken'),
 }
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {

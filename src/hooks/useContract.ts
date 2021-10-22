@@ -131,7 +131,7 @@ export function useMulticall2Contract() {
   return useContract(chainId && MULTICALL2_ADDRESS[chainId], MULTICALL2_ABI, false)
 }
 
-export function useSushiContract(withSignerIfPossible = true): Contract | null {
+export function useFinaContract(withSignerIfPossible = true): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && FINA_ADDRESS[chainId], FINA_ABI, withSignerIfPossible)
 }
@@ -164,7 +164,7 @@ export function useRouterContract(useArcher = false, withSignerIfPossible?: bool
   return useContract(address, abi, withSignerIfPossible)
 }
 
-export function useSushiBarContract(withSignerIfPossible?: boolean): Contract | null {
+export function useFinaLoungeContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && BAR_ADDRESS[chainId], BAR_ABI, withSignerIfPossible)
 }

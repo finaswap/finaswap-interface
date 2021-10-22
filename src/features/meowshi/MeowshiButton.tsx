@@ -28,8 +28,8 @@ const MeowshiButton: FC<MeowshiButtonProps> = ({ meowshiState }) => {
   })
   const { account, chainId } = useActiveWeb3React()
   const sushiBalance = useTokenBalance(account, FINA[ChainId.MAINNET])
-  const xSushiBalance = useTokenBalance(account, XFINA)
-  const { approvalState, approve, meow, unmeow, meowSushi, unmeowSushi } = useMeowshi(
+  const xFinaBalance = useTokenBalance(account, XFINA)
+  const { approvalState, approve, meow, unmeow, meowFina, unmeowFina } = useMeowshi(
     currencies[Field.INPUT] === FINA[ChainId.MAINNET]
   )
   const balance = useTokenBalance(account, currencies[Field.INPUT])
@@ -53,7 +53,7 @@ const MeowshiButton: FC<MeowshiButtonProps> = ({ meowshiState }) => {
     let tx
     if (doMeow) {
       if (currencies[Field.INPUT]?.symbol === 'FINA') {
-        tx = await meowSushi({
+        tx = await meowFina({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
           decimals: sushiBalance.currency.decimals,
         })
@@ -61,20 +61,20 @@ const MeowshiButton: FC<MeowshiButtonProps> = ({ meowshiState }) => {
       if (currencies[Field.INPUT]?.symbol === 'xFINA') {
         tx = await meow({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
-          decimals: xSushiBalance.currency.decimals,
+          decimals: xFinaBalance.currency.decimals,
         })
       }
     } else {
       if (currencies[Field.OUTPUT]?.symbol === 'FINA') {
-        tx = await unmeowSushi({
+        tx = await unmeowFina({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
-          decimals: xSushiBalance.currency.decimals,
+          decimals: xFinaBalance.currency.decimals,
         })
       }
       if (currencies[Field.OUTPUT]?.symbol === 'xFINA') {
         tx = await unmeow({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
-          decimals: xSushiBalance.currency.decimals,
+          decimals: xFinaBalance.currency.decimals,
         })
       }
     }

@@ -76,7 +76,7 @@ export function useUserInfo(farm, token) {
   return amount ? CurrencyAmount.fromRawAmount(token, amount) : undefined
 }
 
-export function usePendingSushi(farm) {
+export function usePendingFina(farm) {
   const { account, chainId } = useActiveWeb3React()
 
   const contract = useChefContract(farm.chef)
@@ -88,7 +88,7 @@ export function usePendingSushi(farm) {
     return [String(farm.id), String(account)]
   }, [farm, account])
 
-  const result = useSingleCallResult(args ? contract : null, 'pendingSushi', args)?.result
+  const result = useSingleCallResult(args ? contract : null, 'pendingFina', args)?.result
 
   const value = result?.[0]
 
@@ -129,7 +129,7 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
     return [...Array(numberOfPools.toNumber()).keys()].map((pid) => [String(pid), String(account)])
   }, [numberOfPools, account])
 
-  const pendingSushi = useSingleContractMultipleData(args ? contract : null, 'pendingSushi', args)
+  const pendingFina = useSingleContractMultipleData(args ? contract : null, 'pendingFina', args)
 
   const userInfo = useSingleContractMultipleData(args ? contract : null, 'userInfo', args)
 
@@ -150,21 +150,21 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
   }, [chainId, contract])
 
   return useMemo(() => {
-    if (!pendingSushi || !userInfo) {
+    if (!pendingFina || !userInfo) {
       return []
     }
-    return zip(pendingSushi, userInfo)
+    return zip(pendingFina, userInfo)
       .map((data, i) => ({
         id: args[i][0],
-        pendingSushi: data[0].result?.[0] || Zero,
+        pendingFina: data[0].result?.[0] || Zero,
         amount: data[1].result?.[0] || Zero,
         chef: getChef(),
         // pendingTokens: data?.[2]?.result,
       }))
-      .filter(({ pendingSushi, amount }) => {
-        return (pendingSushi && !pendingSushi.isZero()) || (amount && !amount.isZero())
+      .filter(({ pendingFina, amount }) => {
+        return (pendingFina && !pendingFina.isZero()) || (amount && !amount.isZero())
       })
-  }, [args, getChef, pendingSushi, userInfo])
+  }, [args, getChef, pendingFina, userInfo])
 }
 
 export function usePositions(chainId = undefined) {

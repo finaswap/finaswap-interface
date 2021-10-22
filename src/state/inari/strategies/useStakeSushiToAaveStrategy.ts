@@ -13,8 +13,8 @@ import { useTokenBalances } from '../../wallet/hooks'
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
   name: i18n._(t`FINA → Aave`),
   steps: [i18n._(t`FINA`), i18n._(t`xFINA`), i18n._(t`Aave`)],
-  zapMethod: 'stakeSushiToAave',
-  unzapMethod: 'unstakeSushiFromAave',
+  zapMethod: 'stakeFinaToAave',
+  unzapMethod: 'unstakeFinaFromAave',
   description: i18n._(
     t`Stake FINA for xFINA and deposit into Aave in one click. xFINA in Aave (aXFINA) can be lent or used as collateral for borrowing.`
   ),
@@ -37,13 +37,13 @@ export const tokenDefinitions: StrategyTokenDefinitions = {
   },
 }
 
-const useStakeSushiToAaveStrategy = (): StrategyHook => {
+const useStakeFinaToAaveStrategy = (): StrategyHook => {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
   const balances = useTokenBalances(account, [FINA[ChainId.MAINNET], AXFINA])
   const general = useMemo(() => GENERAL(i18n), [i18n])
   const { setBalances, ...strategy } = useBaseStrategy({
-    id: 'stakeSushiToAaveStrategy',
+    id: 'stakeFinaToAaveStrategy',
     general,
     tokenDefinitions,
   })
@@ -66,4 +66,4 @@ const useStakeSushiToAaveStrategy = (): StrategyHook => {
   )
 }
 
-export default useStakeSushiToAaveStrategy
+export default useStakeFinaToAaveStrategy

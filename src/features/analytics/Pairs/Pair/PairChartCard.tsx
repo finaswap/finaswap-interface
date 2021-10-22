@@ -1,4 +1,4 @@
-import { useBlock, useDayData, useSushiPairs } from '../../../../services/graph'
+import { useBlock, useDayData, useFinaPairs } from '../../../../services/graph'
 import { useMemo, useState } from 'react'
 import ChartCard from '../../ChartCard'
 import { useActiveWeb3React } from '../../../../hooks'
@@ -39,14 +39,14 @@ export default function PairChartCard(props: PairChartCardProps): JSX.Element {
   const block1d = useBlock({ daysAgo: 1, chainId })
   const block2d = useBlock({ daysAgo: 2, chainId })
 
-  const pair = useSushiPairs({ subset: [props.pair], shouldFetch: !!props.pair, chainId })?.[0]
-  const pair1d = useSushiPairs({
+  const pair = useFinaPairs({ subset: [props.pair], shouldFetch: !!props.pair, chainId })?.[0]
+  const pair1d = useFinaPairs({
     subset: [props.pair],
     block: block1d,
     shouldFetch: !!props.pair && !!block1d,
     chainId,
   })?.[0]
-  const pair2d = useSushiPairs({
+  const pair2d = useFinaPairs({
     subset: [props.pair],
     block: block2d,
     shouldFetch: !!props.pair && !!block2d,

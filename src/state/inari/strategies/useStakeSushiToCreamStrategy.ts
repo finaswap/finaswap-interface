@@ -15,8 +15,8 @@ import { useTokenBalances } from '../../wallet/hooks'
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
   name: i18n._(t`FINA → Cream`),
   steps: [i18n._(t`FINA`), i18n._(t`xFINA`), i18n._(t`Cream`)],
-  zapMethod: 'stakeSushiToCream',
-  unzapMethod: 'unstakeSushiFromCream',
+  zapMethod: 'stakeFinaToCream',
+  unzapMethod: 'unstakeFinaFromCream',
   description: i18n._(
     t`Stake FINA for xFINA and deposit into Cream in one click. xFINA in Cream (crXFINA) can be lent or used as collateral for borrowing.`
   ),
@@ -39,7 +39,7 @@ export const tokenDefinitions: StrategyTokenDefinitions = {
   },
 }
 
-const useStakeSushiToCreamStrategy = (): StrategyHook => {
+const useStakeFinaToCreamStrategy = (): StrategyHook => {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
   const { zapIn, inputValue } = useDerivedInariState()
@@ -53,7 +53,7 @@ const useStakeSushiToCreamStrategy = (): StrategyHook => {
   const approveCallback = useApproveCallback(approveAmount, inariContract?.address)
   const general = useMemo(() => GENERAL(i18n), [i18n])
   const { execute, setBalances, ...baseStrategy } = useBaseStrategy({
-    id: 'stakeSushiToCreamStrategy',
+    id: 'stakeFinaToCreamStrategy',
     general,
     tokenDefinitions,
   })
@@ -111,4 +111,4 @@ const useStakeSushiToCreamStrategy = (): StrategyHook => {
   )
 }
 
-export default useStakeSushiToCreamStrategy
+export default useStakeFinaToCreamStrategy

@@ -12,14 +12,14 @@ import useBaseStrategy from './useBaseStrategy'
 import { useBentoBalance } from '../../bentobox/hooks'
 import useBentoBoxTrait from '../traits/useBentoBoxTrait'
 import { useLingui } from '@lingui/react'
-import useSushiPerXSushi from '../../../hooks/useXSushiPerSushi'
+import useFinaPerXFina from '../../../hooks/useXFinaPerFina'
 import { useTokenBalances } from '../../wallet/hooks'
 
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
   name: i18n._(t`Cream → Bento`),
   steps: [i18n._(t`FINA`), i18n._(t`crXFINA`), i18n._(t`BentoBox`)],
-  zapMethod: 'stakeSushiToCreamToBento',
-  unzapMethod: 'unstakeSushiFromCreamFromBento',
+  zapMethod: 'stakeFinaToCreamToBento',
+  unzapMethod: 'unstakeFinaFromCreamFromBento',
   description: i18n._(t`Stake FINA for xFINA into Cream and deposit crXFINA into BentoBox in one click.`),
   inputSymbol: i18n._(t`FINA`),
   outputSymbol: i18n._(t`crXFINA in BentoBox`),
@@ -40,18 +40,18 @@ export const tokenDefinitions: StrategyTokenDefinitions = {
   },
 }
 
-const useStakeSushiToCreamToBentoStrategy = (): StrategyHook => {
+const useStakeFinaToCreamToBentoStrategy = (): StrategyHook => {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
   const zenkoContract = useZenkoContract()
   const balances = useTokenBalances(account, [FINA[ChainId.MAINNET]])
-  const sushiPerXSushi = useSushiPerXSushi(true)
-  const crxSushiBentoBalance = useBentoBalance(CRXFINA.address)
+  const sushiPerXFina = useFinaPerXFina(true)
+  const crxFinaBentoBalance = useBentoBalance(CRXFINA.address)
 
   // Strategy ends in BentoBox so use BaseBentoBox strategy
   const general = useMemo(() => GENERAL(i18n), [i18n])
   const baseStrategy = useBaseStrategy({
-    id: 'stakeSushiToCreamToBentoStrategy',
+    id: 'stakeFinaToCreamToBentoStrategy',
     general,
     tokenDefinitions,
   })
@@ -64,25 +64,25 @@ const useStakeSushiToCreamToBentoStrategy = (): StrategyHook => {
 
     setBalances({
       inputTokenBalance: balances[FINA[ChainId.MAINNET].address],
-      outputTokenBalance: tryParseAmount(crxSushiBentoBalance?.value?.toFixed(8) || '0', CRXFINA),
+      outputTokenBalance: tryParseAmount(crxFinaBentoBalance?.value?.toFixed(8) || '0', CRXFINA),
     })
-  }, [balances, setBalances, crxSushiBentoBalance?.value])
+  }, [balances, setBalances, crxFinaBentoBalance?.value])
 
   const calculateOutputFromInput = useCallback(
     async (zapIn: boolean, inputValue: string, inputToken: Token, outputToken: Token) => {
-      if (!sushiPerXSushi || !inputValue || !zenkoContract) return null
+      if (!sushiPerXFina || !inputValue || !zenkoContract) return null
 
       if (zapIn) {
-        const value = inputValue.toBigNumber(18).mulDiv(e10(18), sushiPerXSushi.toString().toBigNumber(18)).toString()
+        const value = inputValue.toBigNumber(18).mulDiv(e10(18), sushiPerXFina.toString().toBigNumber(18)).toString()
         const cValue = await zenkoContract.toCtoken(CRXFINA.address, value)
         return cValue.toFixed(outputToken.decimals)
       } else {
         const cValue = await zenkoContract.fromCtoken(CRXFINA.address, inputValue.toBigNumber(inputToken.decimals))
-        const value = BigNumber.from(cValue).mulDiv(sushiPerXSushi.toString().toBigNumber(18), e10(18))
+        const value = BigNumber.from(cValue).mulDiv(sushiPerXFina.toString().toBigNumber(18), e10(18))
         return value.toFixed(outputToken.decimals)
       }
     },
-    [sushiPerXSushi, zenkoContract]
+    [sushiPerXFina, zenkoContract]
   )
 
   return useMemo(
@@ -95,4 +95,4 @@ const useStakeSushiToCreamToBentoStrategy = (): StrategyHook => {
   )
 }
 
-export default useStakeSushiToCreamToBentoStrategy
+export default useStakeFinaToCreamToBentoStrategy

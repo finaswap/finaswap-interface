@@ -6,7 +6,7 @@ export const POOL_DENY = ['14', '29', '45', '30']
 export const AVERAGE_BLOCK_TIME_IN_SECS = 13
 
 export const MERKLE_ROOT =
-  'https://raw.githubusercontent.com/sushiswap/sushi-vesting/master/merkle/week-19/merkle-10959148-11824101.json'
+  'https://raw.githubusercontent.com/finaswap/finaswap-vesting/master/merkle/week-19/merkle-10959148-11824101.json'
 
 export const NetworkContextName = 'NETWORK'
 

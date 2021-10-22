@@ -14,8 +14,8 @@ import Typography from '../../components/Typography'
 import { e10 } from '../../functions'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import useMeowshiPerXSushi from '../../hooks/useMeowshiPerXSushi'
-import useSushiPerXSushi from '../../hooks/useXSushiPerSushi'
+import useMeowshiPerXFina from '../../hooks/useMeowshiPerXFina'
+import useFinaPerXFina from '../../hooks/useXFinaPerFina'
 
 export enum Field {
   INPUT = 'INPUT',
@@ -40,8 +40,8 @@ export interface MeowshiState {
 
 export default function Meowshi() {
   const { i18n } = useLingui()
-  const sushiPerXSushi = useSushiPerXSushi()
-  const [meowshiPerXSushi, xSushiPerMeowshi] = useMeowshiPerXSushi()
+  const sushiPerXFina = useFinaPerXFina()
+  const [meowshiPerXFina, xFinaPerMeowshi] = useMeowshiPerXFina()
 
   const [fields, setFields] = useState({
     independentField: Field.INPUT,
@@ -59,12 +59,12 @@ export default function Meowshi() {
       setFields((prevState) => {
         const inputRate =
           currencies[Field.INPUT] === XFINA
-            ? meowshiPerXSushi.mul(e10(5))
-            : meowshiPerXSushi.mul(e10(5)).mulDiv(e10(18), sushiPerXSushi.toString().toBigNumber(18))
+            ? meowshiPerXFina.mul(e10(5))
+            : meowshiPerXFina.mul(e10(5)).mulDiv(e10(18), sushiPerXFina.toString().toBigNumber(18))
         const outputRate =
           currencies[Field.OUTPUT] === XFINA
-            ? xSushiPerMeowshi.div(e10(5))
-            : xSushiPerMeowshi.mulDiv(sushiPerXSushi.toString().toBigNumber(18), e10(18)).div(e10(5))
+            ? xFinaPerMeowshi.div(e10(5))
+            : xFinaPerMeowshi.mulDiv(sushiPerXFina.toString().toBigNumber(18), e10(18)).div(e10(5))
 
         if (field === Field.INPUT) {
           if (currencies[Field.OUTPUT] === MEOW) {
@@ -97,7 +97,7 @@ export default function Meowshi() {
         }
       })
     },
-    [currencies, meowshiPerXSushi, sushiPerXSushi, xSushiPerMeowshi]
+    [currencies, meowshiPerXFina, sushiPerXFina, xFinaPerMeowshi]
   )
 
   const setCurrency = useCallback((currency: Currency, field: Field) => {
@@ -133,7 +133,7 @@ export default function Meowshi() {
   return (
     <Container id="meowshi-page" className="py-4 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
-        <title>Meowshi | Sushi</title>
+        <title>Meowshi | Fina</title>
         <meta key="description" name="description" content="FinaSwap Meowshi..." />
       </Head>
 

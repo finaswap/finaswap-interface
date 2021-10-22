@@ -14,7 +14,7 @@ import {
   getPicklePrice,
   getRulerPrice,
   getStakePrice,
-  getSushiPrice,
+  getFinaPrice,
   getToken,
   getTokenDayData,
   getTokenPairs,
@@ -186,8 +186,8 @@ export function useMaticPrice(variables = undefined, swrConfig: SWRConfiguration
   return data
 }
 
-export function useSushiPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
-  const { data } = useSWR(['sushiPrice', JSON.stringify(variables)], () => getSushiPrice(variables), swrConfig)
+export function useFinaPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
+  const { data } = useSWR(['sushiPrice', JSON.stringify(variables)], () => getFinaPrice(variables), swrConfig)
   return data
 }
 
@@ -234,7 +234,7 @@ export function useLiquidityPositions(
   return data
 }
 
-interface useSushiPairsProps {
+interface useFinaPairsProps {
   timestamp?: number
   block?: number
   chainId: number
@@ -243,8 +243,8 @@ interface useSushiPairsProps {
   subset?: string[]
 }
 
-export function useSushiPairs(
-  { timestamp, block, chainId, shouldFetch = true, user, subset }: useSushiPairsProps,
+export function useFinaPairs(
+  { timestamp, block, chainId, shouldFetch = true, user, subset }: useFinaPairsProps,
   swrConfig: SWRConfiguration = undefined
 ) {
   const blockFetched = useBlock({ timestamp, chainId, shouldFetch: shouldFetch && !!timestamp })

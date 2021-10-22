@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useSushiBarContract, useSushiContract } from './useContract'
+import { useFinaLoungeContract, useFinaContract } from './useContract'
 
 import Fraction from '../entities/Fraction'
 import { BigNumber } from '@ethersproject/bignumber'
@@ -8,11 +8,11 @@ import { parseUnits } from '@ethersproject/units'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useTransactionAdder } from '../state/transactions/hooks'
 
-const useSushiBar = () => {
+const useFinaLounge = () => {
   const { account } = useActiveWeb3React()
   const addTransaction = useTransactionAdder()
-  const sushiContract = useSushiContract(true) // withSigner
-  const barContract = useSushiBarContract(true) // withSigner
+  const sushiContract = useFinaContract(true) // withSigner
+  const barContract = useFinaLoungeContract(true) // withSigner
 
   const [allowance, setAllowance] = useState('0')
 
@@ -51,7 +51,7 @@ const useSushiBar = () => {
     async (amount: string) => {
       try {
         const tx = await barContract?.enter(parseUnits(amount))
-        return addTransaction(tx, { summary: 'Enter SushiBar' })
+        return addTransaction(tx, { summary: 'Enter FinaLounge' })
       } catch (e) {
         return e
       }
@@ -64,7 +64,7 @@ const useSushiBar = () => {
     async (amount: string) => {
       try {
         const tx = await barContract?.leave(parseUnits(amount))
-        return addTransaction(tx, { summary: 'Leave SushiBar' })
+        return addTransaction(tx, { summary: 'Leave FinaLounge' })
       } catch (e) {
         console.error(e)
         return e
@@ -76,4 +76,4 @@ const useSushiBar = () => {
   return { allowance, approve, enter, leave }
 }
 
-export default useSushiBar
+export default useFinaLounge

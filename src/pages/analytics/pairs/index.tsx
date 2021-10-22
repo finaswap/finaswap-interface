@@ -1,4 +1,4 @@
-import { useBlock, useSushiPairs } from '../../../services/graph'
+import { useBlock, useFinaPairs } from '../../../services/graph'
 import { useMemo, useState } from 'react'
 
 import AnalyticsContainer from '../../../features/analytics/AnalyticsContainer'
@@ -18,11 +18,11 @@ export default function Pairs() {
   const block1w = useBlock({ daysAgo: 7, chainId })
   const block2w = useBlock({ daysAgo: 14, chainId })
 
-  const pairs = useSushiPairs({ chainId })
-  const pairs1d = useSushiPairs({ block: block1d, shouldFetch: !!block1d, chainId })
-  const pairs2d = useSushiPairs({ block: block2d, shouldFetch: !!block2d && type !== 'all', chainId }) // No need to fetch if we don't need the data
-  const pairs1w = useSushiPairs({ block: block1w, shouldFetch: !!block1w, chainId })
-  const pairs2w = useSushiPairs({ block: block2w, shouldFetch: !!block2w && type !== 'all', chainId })
+  const pairs = useFinaPairs({ chainId })
+  const pairs1d = useFinaPairs({ block: block1d, shouldFetch: !!block1d, chainId })
+  const pairs2d = useFinaPairs({ block: block2d, shouldFetch: !!block2d && type !== 'all', chainId }) // No need to fetch if we don't need the data
+  const pairs1w = useFinaPairs({ block: block1w, shouldFetch: !!block1w, chainId })
+  const pairs2w = useFinaPairs({ block: block2w, shouldFetch: !!block2w && type !== 'all', chainId })
 
   const pairsFormatted = useMemo(() => {
     return type === 'all'

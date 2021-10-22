@@ -5,7 +5,7 @@ import { useDerivedInariState } from '../hooks'
 import { useCallback, useMemo, useState } from 'react'
 import { CurrencyAmount, Token } from '@finaswap/sdk'
 import { e10, tryParseAmount } from '../../../functions'
-import useSushiPerXSushi from '../../../hooks/useXSushiPerSushi'
+import useFinaPerXFina from '../../../hooks/useXFinaPerFina'
 import { BentoPermit } from '../../../hooks/useBentoMasterApproveCallback'
 
 export interface useBaseStrategyInterface {
@@ -43,7 +43,7 @@ const useBaseStrategy = ({ id, general, tokenDefinitions }: useBaseStrategyInter
   const inariContract = useInariContract()
   const addTransaction = useTransactionAdder()
   const approveCallback = useApproveCallback(inputValue, inariContract?.address)
-  const sushiPerXSushi = useSushiPerXSushi(true)
+  const sushiPerXFina = useFinaPerXFina(true)
   const [balances, _setBalances] = useState<StrategyBalances>({
     inputTokenBalance: CurrencyAmount.fromRawAmount(tokens.inputToken, '0'),
     outputTokenBalance: CurrencyAmount.fromRawAmount(tokens.outputToken, '0'),
@@ -60,7 +60,7 @@ const useBaseStrategy = ({ id, general, tokenDefinitions }: useBaseStrategyInter
 
   // Default execution function, can be overridden in child strategies
   // If you override, it's best to do some formatting beforehand and then still call this function
-  // Look at useStakeSushiToCreamStrategy for an example
+  // Look at useStakeFinaToCreamStrategy for an example
   const execute = useCallback(
     async (val: CurrencyAmount<Token>) => {
       if (!inariContract) return
@@ -82,19 +82,19 @@ const useBaseStrategy = ({ id, general, tokenDefinitions }: useBaseStrategyInter
   )
 
   // Default function for calculating the output based on the input
-  // This one is converting Sushi to xSushi and vice-versa.
+  // This one is converting Fina to xFina and vice-versa.
   // Function can be overridden or enhanced if you need custom input to output calculations
   const calculateOutputFromInput = useCallback(
     (zapIn: boolean, inputValue: string, inputToken: Token, outputToken: Token) => {
-      if (!sushiPerXSushi || !inputValue) return null
+      if (!sushiPerXFina || !inputValue) return null
 
       return (
         zapIn
-          ? inputValue.toBigNumber(18).mulDiv(e10(18), sushiPerXSushi.toString().toBigNumber(18))
-          : inputValue.toBigNumber(18).mulDiv(sushiPerXSushi.toString().toBigNumber(18), e10(18))
+          ? inputValue.toBigNumber(18).mulDiv(e10(18), sushiPerXFina.toString().toBigNumber(18))
+          : inputValue.toBigNumber(18).mulDiv(sushiPerXFina.toString().toBigNumber(18), e10(18))
       )?.toFixed(18)
     },
-    [sushiPerXSushi]
+    [sushiPerXFina]
   )
 
   // Convenience wrapper function that allows for setting balances
