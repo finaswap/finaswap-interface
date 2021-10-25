@@ -1,5 +1,5 @@
-import { CRXFINA, FINA, XFINA } from '../../../config/tokens'
-import { ChainId, CurrencyAmount, FINA_ADDRESS, Token } from '@finaswap/sdk'
+import { CRXFNA, FNA, XFNA } from '../../../config/tokens'
+import { ChainId, CurrencyAmount, FNA_ADDRESS, Token } from '@finaswap/sdk'
 import { StrategyGeneralInfo, StrategyHook, StrategyTokenDefinitions } from '../types'
 import { useActiveWeb3React, useApproveCallback, useInariContract, useZenkoContract } from '../../../hooks'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
@@ -13,29 +13,29 @@ import { useLingui } from '@lingui/react'
 import { useTokenBalances } from '../../wallet/hooks'
 
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
-  name: i18n._(t`FINA → Cream`),
-  steps: [i18n._(t`FINA`), i18n._(t`xFINA`), i18n._(t`Cream`)],
+  name: i18n._(t`FNA → Cream`),
+  steps: [i18n._(t`FNA`), i18n._(t`xFNA`), i18n._(t`Cream`)],
   zapMethod: 'stakeFinaToCream',
   unzapMethod: 'unstakeFinaFromCream',
   description: i18n._(
-    t`Stake FINA for xFINA and deposit into Cream in one click. xFINA in Cream (crXFINA) can be lent or used as collateral for borrowing.`
+    t`Stake FNA for xFNA and deposit into Cream in one click. xFNA in Cream (crXFNA) can be lent or used as collateral for borrowing.`
   ),
-  inputSymbol: i18n._(t`FINA`),
-  outputSymbol: i18n._(t`xFINA in Cream`),
+  inputSymbol: i18n._(t`FNA`),
+  outputSymbol: i18n._(t`xFNA in Cream`),
 })
 
 export const tokenDefinitions: StrategyTokenDefinitions = {
   inputToken: {
     chainId: ChainId.MAINNET,
-    address: FINA_ADDRESS[ChainId.MAINNET],
+    address: FNA_ADDRESS[ChainId.MAINNET],
     decimals: 18,
-    symbol: 'FINA',
+    symbol: 'FNA',
   },
   outputToken: {
     chainId: ChainId.MAINNET,
     address: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
     decimals: 18,
-    symbol: 'XFINA',
+    symbol: 'XFNA',
   },
 }
 
@@ -45,11 +45,11 @@ const useStakeFinaToCreamStrategy = (): StrategyHook => {
   const { zapIn, inputValue } = useDerivedInariState()
   const zenkoContract = useZenkoContract()
   const inariContract = useInariContract()
-  const balances = useTokenBalances(account, [FINA[ChainId.MAINNET], CRXFINA])
+  const balances = useTokenBalances(account, [FNA[ChainId.MAINNET], CRXFNA])
   const cTokenAmountRef = useRef<CurrencyAmount<Token>>(null)
   const approveAmount = useMemo(() => (zapIn ? inputValue : cTokenAmountRef.current), [inputValue, zapIn])
 
-  // Override approveCallback for this strategy as we need to approve CRXFINA on zapOut
+  // Override approveCallback for this strategy as we need to approve CRXFNA on zapOut
   const approveCallback = useApproveCallback(approveAmount, inariContract?.address)
   const general = useMemo(() => GENERAL(i18n), [i18n])
   const { execute, setBalances, ...baseStrategy } = useBaseStrategy({
@@ -62,14 +62,14 @@ const useStakeFinaToCreamStrategy = (): StrategyHook => {
     async (val: CurrencyAmount<Token>) => {
       if (!zenkoContract || !val) return null
 
-      const bal = await zenkoContract.toCtoken(CRXFINA.address, val.quotient.toString())
-      return CurrencyAmount.fromRawAmount(CRXFINA, bal.toString())
+      const bal = await zenkoContract.toCtoken(CRXFNA.address, val.quotient.toString())
+      return CurrencyAmount.fromRawAmount(CRXFNA, bal.toString())
     },
     [zenkoContract]
   )
 
-  // Run before executing transaction creation by transforming from xFINA value to crXFINA value
-  // As you will be spending crXFINA when unzapping from this strategy
+  // Run before executing transaction creation by transforming from xFNA value to crXFNA value
+  // As you will be spending crXFNA when unzapping from this strategy
   const preExecute = useCallback(
     async (val: CurrencyAmount<Token>) => {
       if (zapIn) return execute(val)
@@ -86,14 +86,14 @@ const useStakeFinaToCreamStrategy = (): StrategyHook => {
     if (!zenkoContract || !balances) return
 
     const main = async () => {
-      if (!balances[CRXFINA.address]) return tryParseAmount('0', XFINA)
+      if (!balances[CRXFNA.address]) return tryParseAmount('0', XFNA)
       const bal = await zenkoContract.fromCtoken(
-        CRXFINA.address,
-        balances[CRXFINA.address].toFixed().toBigNumber(CRXFINA.decimals).toString()
+        CRXFNA.address,
+        balances[CRXFNA.address].toFixed().toBigNumber(CRXFNA.decimals).toString()
       )
       setBalances({
-        inputTokenBalance: balances[FINA[ChainId.MAINNET].address],
-        outputTokenBalance: CurrencyAmount.fromRawAmount(XFINA, bal.toString()),
+        inputTokenBalance: balances[FNA[ChainId.MAINNET].address],
+        outputTokenBalance: CurrencyAmount.fromRawAmount(XFNA, bal.toString()),
       })
     }
 

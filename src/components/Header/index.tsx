@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, FINA_ADDRESS } from '@finaswap/sdk'
+import { ChainId, Currency, NATIVE, FNA_ADDRESS } from '@finaswap/sdk'
 import { Feature, featureEnabled } from '../../functions/feature'
 import React, { useEffect, useState } from 'react'
 
@@ -115,7 +115,7 @@ function AppBar(): JSX.Element {
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
                     {chainId && [ChainId.MAINNET].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add xFINA to your MetaMask wallet`)}>
+                        <QuestionHelper text={i18n._(t`Add xFNA to your MetaMask wallet`)}>
                           <div
                             className="hidden p-0.5 rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800"
                             onClick={() => {
@@ -124,7 +124,7 @@ function AppBar(): JSX.Element {
                                   type: 'ERC20',
                                   options: {
                                     address: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
-                                    symbol: 'XFINA',
+                                    symbol: 'XFNA',
                                     decimals: 18,
                                     image:
                                       'https://raw.githubusercontent.com/finaswap/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
@@ -137,7 +137,7 @@ function AppBar(): JSX.Element {
                                   })
                                   .then((success) => {
                                     if (success) {
-                                      console.log('Successfully added XFINA to MetaMask')
+                                      console.log('Successfully added XFNA to MetaMask')
                                     } else {
                                       throw new Error('Something went wrong.')
                                     }
@@ -148,7 +148,7 @@ function AppBar(): JSX.Element {
                           >
                             <Image
                               src="/images/tokens/xsushi-square.jpg"
-                              alt="xFINA"
+                              alt="xFNA"
                               width="38px"
                               height="38px"
                               objectFit="contain"
@@ -159,17 +159,17 @@ function AppBar(): JSX.Element {
                       </>
                     )}
 
-                    {chainId && chainId in FINA_ADDRESS && library && library.provider.isMetaMask && (
+                    {chainId && chainId in FNA_ADDRESS && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add FINA to your MetaMask wallet`)}>
+                        <QuestionHelper text={i18n._(t`Add FNA to your MetaMask wallet`)}>
                           <div
                             className="hidden rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800 p-0.5"
                             onClick={() => {
                               const params: any = {
                                 type: 'ERC20',
                                 options: {
-                                  address: FINA_ADDRESS[chainId],
-                                  symbol: 'FINA',
+                                  address: FNA_ADDRESS[chainId],
+                                  symbol: 'FNA',
                                   decimals: 18,
                                   image:
                                     'https://raw.githubusercontent.com/finaswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
@@ -183,7 +183,7 @@ function AppBar(): JSX.Element {
                                   })
                                   .then((success) => {
                                     if (success) {
-                                      console.log('Successfully added FINA to MetaMask')
+                                      console.log('Successfully added FNA to MetaMask')
                                     } else {
                                       throw new Error('Something went wrong.')
                                     }
@@ -194,7 +194,7 @@ function AppBar(): JSX.Element {
                           >
                             <Image
                               src="/images/tokens/sushi-square.jpg"
-                              alt="FINA"
+                              alt="FNA"
                               width="38px"
                               height="38px"
                               objectFit="contain"

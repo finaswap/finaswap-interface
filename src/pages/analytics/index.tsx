@@ -7,7 +7,7 @@ export default function Analytics() {
     <Container maxWidth="full" className="grid h-full grid-cols-4 mx-auto gap-9">
       <Head>
         <title>Analytics Dashboard | Fina</title>
-        <meta name="description" content="FINA Analytics Dashboard by Fina..." />
+        <meta name="description" content="FNA Analytics Dashboard by Fina..." />
       </Head>
 
       <div className="sticky top-0 hidden lg:block md:col-span-1" style={{ maxHeight: '40rem' }}>

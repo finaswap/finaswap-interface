@@ -108,8 +108,8 @@ function MISO() {
 
               <Article
                 title={`How do I participate?`}
-                content={`The auction receives $FINA as its payment token currency. Go to auction page, 
-                          commit the amount of $FINA you’d like and claim your purchase after the 
+                content={`The auction receives $FNA as its payment token currency. Go to auction page, 
+                          commit the amount of $FNA you’d like and claim your purchase after the 
                           auction finishes.`}
               />
 

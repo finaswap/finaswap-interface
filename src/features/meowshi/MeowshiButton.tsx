@@ -1,7 +1,7 @@
 import { ApprovalState, useActiveWeb3React } from '../../hooks'
 import { Field, MeowshiState } from '../../pages/tools/meowshi'
 import React, { FC, useMemo, useState } from 'react'
-import { FINA, XFINA } from '../../config/tokens'
+import { FNA, XFNA } from '../../config/tokens'
 import TransactionConfirmationModal, { ConfirmationModalContent } from '../../modals/TransactionConfirmationModal'
 
 import Button from '../../components/Button'
@@ -27,10 +27,10 @@ const MeowshiButton: FC<MeowshiButtonProps> = ({ meowshiState }) => {
     open: false,
   })
   const { account, chainId } = useActiveWeb3React()
-  const sushiBalance = useTokenBalance(account, FINA[ChainId.MAINNET])
-  const xFinaBalance = useTokenBalance(account, XFINA)
+  const sushiBalance = useTokenBalance(account, FNA[ChainId.MAINNET])
+  const xFinaBalance = useTokenBalance(account, XFNA)
   const { approvalState, approve, meow, unmeow, meowFina, unmeowFina } = useMeowshi(
-    currencies[Field.INPUT] === FINA[ChainId.MAINNET]
+    currencies[Field.INPUT] === FNA[ChainId.MAINNET]
   )
   const balance = useTokenBalance(account, currencies[Field.INPUT])
   const parsedInputAmount = tryParseAmount(fields[Field.INPUT], currencies[Field.INPUT])
@@ -52,26 +52,26 @@ const MeowshiButton: FC<MeowshiButtonProps> = ({ meowshiState }) => {
 
     let tx
     if (doMeow) {
-      if (currencies[Field.INPUT]?.symbol === 'FINA') {
+      if (currencies[Field.INPUT]?.symbol === 'FNA') {
         tx = await meowFina({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
           decimals: sushiBalance.currency.decimals,
         })
       }
-      if (currencies[Field.INPUT]?.symbol === 'xFINA') {
+      if (currencies[Field.INPUT]?.symbol === 'xFNA') {
         tx = await meow({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
           decimals: xFinaBalance.currency.decimals,
         })
       }
     } else {
-      if (currencies[Field.OUTPUT]?.symbol === 'FINA') {
+      if (currencies[Field.OUTPUT]?.symbol === 'FNA') {
         tx = await unmeowFina({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
           decimals: xFinaBalance.currency.decimals,
         })
       }
-      if (currencies[Field.OUTPUT]?.symbol === 'xFINA') {
+      if (currencies[Field.OUTPUT]?.symbol === 'xFNA') {
         tx = await unmeow({
           value: parseUnits(fields[Field.INPUT], sushiBalance.currency.decimals),
           decimals: xFinaBalance.currency.decimals,

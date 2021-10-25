@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, JSBI, Percent, Token, TradeType, Trade as V2Trade } from '@finaswap/sdk'
-import { DAI, FINA, USDC } from '../config/tokens'
+import { DAI, FNA, USDC } from '../config/tokens'
 import { useMemo, useState } from 'react'
 
 import { splitSignature } from '@ethersproject/bytes'
@@ -37,7 +37,7 @@ const PERMITTABLE_TOKENS: {
       name: 'Dai Stablecoin',
       version: '1',
     },
-    [FINA[1].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
+    [FNA[1].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
   },
   [4]: {
     ['0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735']: {
@@ -45,10 +45,10 @@ const PERMITTABLE_TOKENS: {
       name: 'Dai Stablecoin',
       version: '1',
     },
-    [FINA[4].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
+    [FNA[4].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
   },
   [3]: {
-    [FINA[3].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
+    [FNA[3].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
     ['0x07865c6E87B9F70255377e024ace6630C1Eaa37F']: {
       type: PermitType.AMOUNT,
       name: 'USD Coin',
@@ -56,10 +56,10 @@ const PERMITTABLE_TOKENS: {
     },
   },
   [5]: {
-    [FINA[5].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
+    [FNA[5].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
   },
   [42]: {
-    [FINA[42].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
+    [FNA[42].address]: { type: PermitType.AMOUNT, name: 'FinaSwap' },
   },
 }
 

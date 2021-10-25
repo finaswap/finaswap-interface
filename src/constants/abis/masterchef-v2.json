@@ -110,7 +110,7 @@
     },
     {
         "inputs": [],
-        "name": "FINA",
+        "name": "FNA",
         "outputs": [{ "internalType": "contract IERC20", "name": "", "type": "address" }],
         "stateMutability": "view",
         "type": "function"

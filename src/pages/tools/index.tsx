@@ -12,13 +12,13 @@ const TOOLS = (i18n: I18n) => [
   {
     id: 1,
     name: 'MEOWSHI',
-    description: i18n._(t`Redenominate xFINA into MEOWSHI`),
+    description: i18n._(t`Redenominate xFNA into MEOWSHI`),
     href: '/tools/meowshi',
   },
   {
     id: 2,
     name: 'INARI',
-    description: 'Deposit FINA in various strategies & platforms in one click!',
+    description: 'Deposit FNA in various strategies & platforms in one click!',
     href: '/inari',
   },
 ]

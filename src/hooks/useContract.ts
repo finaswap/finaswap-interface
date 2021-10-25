@@ -16,7 +16,7 @@ import {
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
   STOP_LIMIT_ORDER_ADDRESS,
-  FINA_ADDRESS,
+  FNA_ADDRESS,
   TIMELOCK_ADDRESS,
   WNATIVE_ADDRESS,
 } from '@finaswap/sdk'
@@ -51,7 +51,7 @@ import MERKLE_DISTRIBUTOR_ABI from '../constants/abis/merkle-distributor.json'
 import MINICHEF_ABI from '../constants/abis/minichef-v2.json'
 import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import ROUTER_ABI from '../constants/abis/router.json'
-import FINA_ABI from '../constants/abis/fina.json'
+import FNA_ABI from '../constants/abis/fina.json'
 import TIMELOCK_ABI from '../constants/abis/timelock.json'
 import UNI_FACTORY_ABI from '../constants/abis/uniswap-v2-factory.json'
 import WETH9_ABI from '../constants/abis/weth.json'
@@ -133,7 +133,7 @@ export function useMulticall2Contract() {
 
 export function useFinaContract(withSignerIfPossible = true): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && FINA_ADDRESS[chainId], FINA_ABI, withSignerIfPossible)
+  return useContract(chainId && FNA_ADDRESS[chainId], FNA_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {

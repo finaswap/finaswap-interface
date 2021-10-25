@@ -143,8 +143,8 @@ export default function Vesting() {
           <div className="relative w-full overflow-hidden rounded bg-dark-900">
             <div className="flex flex-col gap-3 p-4">
               <div className="flex flex-row justify-between">
-                <div className="font-bold text-white">{i18n._(t`Your Claimable FINA this Week`)}</div>
-                <QuestionHelper text="Your Vested FINA will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next." />
+                <div className="font-bold text-white">{i18n._(t`Your Claimable FNA this Week`)}</div>
+                <QuestionHelper text="Your Vested FNA will be released each week for the next 6 months. The amount released each week is determined by your historical farming rewards. You do not need to harvest each week as unclaimed amounts from each week will continue to accrue onto the next." />
               </div>
               {/* <div style={{ display: 'flex', alignItems: 'baseline' }}> */}
               <div className="flex flex-col items-baseline">
@@ -154,7 +154,7 @@ export default function Vesting() {
                 {account ? (
                   <div className="text-sm text-secondary">
                     {totalLocked ? (
-                      i18n._(t`Historical Total Locked: ${formatNumber(totalLocked)} FINA`)
+                      i18n._(t`Historical Total Locked: ${formatNumber(totalLocked)} FNA`)
                     ) : (
                       <Dots>{i18n._(t`Historical Total Locked: Fetching Total`)}</Dots>
                     )}
@@ -180,7 +180,7 @@ export default function Vesting() {
                 {pendingTreasurySignature ? (
                   <Dots>{i18n._(t`Pending Treasury Transfer`)}</Dots>
                 ) : (
-                  <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim FINA`)}</>
+                  <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim FNA`)}</>
                 )}
 
                 {attempting && (
@@ -196,14 +196,14 @@ export default function Vesting() {
           </div>
           <div className="relative w-full overflow-hidden rounded bg-dark-900">
             <div className="flex flex-col gap-3 p-4">
-              <div className="font-bold text-white">{i18n._(t`Things you can do with your FINA`)}</div>
+              <div className="font-bold text-white">{i18n._(t`Things you can do with your FNA`)}</div>
               <div className="p-4 rounded bg-dark-800">
                 <Link href="/stake">
                   <a className="flex items-center justify-between gap-3">
                     <div className="flex flex-col gap-1">
-                      <div className="font-bold text-white">{i18n._(t`Stake FINA for xFINA`)}</div>
+                      <div className="font-bold text-white">{i18n._(t`Stake FNA for xFNA`)}</div>
                       <div className="text-sm text-secondary">
-                        {t`Gain governance rights with xFINA and earn 5% APR (0.05% of
+                        {t`Gain governance rights with xFNA and earn 5% APR (0.05% of
                                                             all swaps from all chains)`}
                       </div>
                     </div>
@@ -219,7 +219,7 @@ export default function Vesting() {
                     <div className="flex flex-col gap-1">
                       <div className="font-bold text-white">{i18n._(t`Stack Yields with SAAVE`)}</div>
                       <div className="text-sm text-secondary">
-                        {t`Stake into xFINA add collateral as axFINA on Aave all in
+                        {t`Stake into xFNA add collateral as axFNA on Aave all in
                                                             one click`}
                       </div>
                     </div>
@@ -231,10 +231,10 @@ export default function Vesting() {
               </div>
               <div className="p-4 rounded bg-dark-800">
                 <div className="flex flex-col gap-1">
-                  <div className="font-bold text-white">{i18n._(t`Deposit FINA into BentoBox`)}</div>
+                  <div className="font-bold text-white">{i18n._(t`Deposit FNA into BentoBox`)}</div>
                   <div className="text-sm text-secondary">
                     {t`(COMING SOON) Accrue automatic yield through flash loans and
-                                                            FINA strategies`}
+                                                            FNA strategies`}
                   </div>
                 </div>
               </div>

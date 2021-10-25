@@ -1,6 +1,6 @@
 import { Field, MeowshiState } from '../../pages/tools/meowshi'
 import React, { FC } from 'react'
-import { FINA, XFINA } from '../../config/tokens'
+import { FNA, XFNA } from '../../config/tokens'
 
 import { ChainId } from '@finaswap/sdk'
 import Image from 'next/image'
@@ -37,13 +37,13 @@ const CurrencyInputPanel: FC<CurrencyInputPanelProps> = ({ field, meowshiState, 
             <div className="flex items-center gap-4">
               <Image
                 src={
-                  currency === FINA[ChainId.MAINNET]
+                  currency === FNA[ChainId.MAINNET]
                     ? '/images/tokens/sushi-square.jpg'
-                    : currency === XFINA
+                    : currency === XFNA
                     ? '/images/tokens/xsushi-square.jpg'
                     : '/images/tokens/nyan-square.jpg'
                 }
-                alt="FINA"
+                alt="FNA"
                 width="62px"
                 height="62px"
                 objectFit="contain"
@@ -53,13 +53,13 @@ const CurrencyInputPanel: FC<CurrencyInputPanelProps> = ({ field, meowshiState, 
                 <Typography variant="h3" className="leading-6 text-high-emphesis" weight={700}>
                   {currency?.symbol}
                 </Typography>
-                {(currency === FINA[ChainId.MAINNET] || currency === XFINA) && (
+                {(currency === FNA[ChainId.MAINNET] || currency === XFNA) && (
                   <Typography
                     variant="xs"
                     className="underline cursor-pointer text-blue"
-                    onClick={() => setCurrency(currency === XFINA ? FINA[ChainId.MAINNET] : XFINA, field)}
+                    onClick={() => setCurrency(currency === XFNA ? FNA[ChainId.MAINNET] : XFNA, field)}
                   >
-                    {currencies[field] === FINA[ChainId.MAINNET] ? i18n._(t`Use xFINA`) : i18n._(t`Use FINA`)}
+                    {currencies[field] === FNA[ChainId.MAINNET] ? i18n._(t`Use xFNA`) : i18n._(t`Use FNA`)}
                   </Typography>
                 )}
               </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { BigNumber } from '@ethersproject/bignumber'
-import { XFINA } from '../config/tokens'
+import { XFNA } from '../config/tokens'
 import { useBentoBoxContract } from './useContract'
 
 export default function useMeowshiPerXFina() {
@@ -11,8 +11,8 @@ export default function useMeowshiPerXFina() {
   useEffect(() => {
     if (!bentoboxContract) return
     ;(async () => {
-      const toShare = await bentoboxContract.toShare(XFINA.address, '1'.toBigNumber(XFINA.decimals), false)
-      const toAmount = await bentoboxContract.toAmount(XFINA.address, '1'.toBigNumber(XFINA.decimals), false)
+      const toShare = await bentoboxContract.toShare(XFNA.address, '1'.toBigNumber(XFNA.decimals), false)
+      const toAmount = await bentoboxContract.toAmount(XFNA.address, '1'.toBigNumber(XFNA.decimals), false)
       setState([toShare, toAmount])
     })()
   }, [bentoboxContract])

@@ -1,5 +1,5 @@
-import { AXFINA, FINA } from '../../../config/tokens'
-import { ChainId, FINA_ADDRESS } from '@finaswap/sdk'
+import { AXFNA, FNA } from '../../../config/tokens'
+import { ChainId, FNA_ADDRESS } from '@finaswap/sdk'
 import { StrategyGeneralInfo, StrategyHook, StrategyTokenDefinitions } from '../types'
 import { useEffect, useMemo } from 'react'
 
@@ -11,36 +11,36 @@ import { useLingui } from '@lingui/react'
 import { useTokenBalances } from '../../wallet/hooks'
 
 export const GENERAL = (i18n: I18n): StrategyGeneralInfo => ({
-  name: i18n._(t`FINA → Aave`),
-  steps: [i18n._(t`FINA`), i18n._(t`xFINA`), i18n._(t`Aave`)],
+  name: i18n._(t`FNA → Aave`),
+  steps: [i18n._(t`FNA`), i18n._(t`xFNA`), i18n._(t`Aave`)],
   zapMethod: 'stakeFinaToAave',
   unzapMethod: 'unstakeFinaFromAave',
   description: i18n._(
-    t`Stake FINA for xFINA and deposit into Aave in one click. xFINA in Aave (aXFINA) can be lent or used as collateral for borrowing.`
+    t`Stake FNA for xFNA and deposit into Aave in one click. xFNA in Aave (aXFNA) can be lent or used as collateral for borrowing.`
   ),
-  inputSymbol: i18n._(t`FINA`),
-  outputSymbol: i18n._(t`xFINA in Aave`),
+  inputSymbol: i18n._(t`FNA`),
+  outputSymbol: i18n._(t`xFNA in Aave`),
 })
 
 export const tokenDefinitions: StrategyTokenDefinitions = {
   inputToken: {
     chainId: ChainId.MAINNET,
-    address: FINA_ADDRESS[ChainId.MAINNET],
+    address: FNA_ADDRESS[ChainId.MAINNET],
     decimals: 18,
-    symbol: 'FINA',
+    symbol: 'FNA',
   },
   outputToken: {
     chainId: ChainId.MAINNET,
     address: '0xf256cc7847e919fac9b808cc216cac87ccf2f47a',
     decimals: 18,
-    symbol: 'aXFINA',
+    symbol: 'aXFNA',
   },
 }
 
 const useStakeFinaToAaveStrategy = (): StrategyHook => {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
-  const balances = useTokenBalances(account, [FINA[ChainId.MAINNET], AXFINA])
+  const balances = useTokenBalances(account, [FNA[ChainId.MAINNET], AXFNA])
   const general = useMemo(() => GENERAL(i18n), [i18n])
   const { setBalances, ...strategy } = useBaseStrategy({
     id: 'stakeFinaToAaveStrategy',
@@ -52,8 +52,8 @@ const useStakeFinaToAaveStrategy = (): StrategyHook => {
     if (!balances) return
 
     setBalances({
-      inputTokenBalance: balances[FINA[ChainId.MAINNET].address],
-      outputTokenBalance: balances[AXFINA.address],
+      inputTokenBalance: balances[FNA[ChainId.MAINNET].address],
+      outputTokenBalance: balances[AXFNA.address],
     })
   }, [balances, setBalances])
 

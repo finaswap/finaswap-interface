@@ -36,7 +36,7 @@ import {
   RENBTC,
   RUNE,
   STETH,
-  FINA,
+  FNA,
   UMA,
   USDC,
   USDP,
@@ -44,7 +44,7 @@ import {
   UST,
   WBTC,
   XDAI,
-  XFINA,
+  XFNA,
 } from '../config/tokens'
 // a list of tokens by chain
 import { ChainId, Currency, Token, WNATIVE } from '@finaswap/sdk'
@@ -155,7 +155,7 @@ export const ADDITIONAL_BASES: {
   [ChainId.MAINNET]: {
     ...MIRROR_ADDITIONAL_BASES,
     '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETH2X_FLI],
-    '0xe379a60A8FC7C9DD161887fFADF3054790576c8D': [XFINA], // XFINA 25 Call [30 June 2021]
+    '0xe379a60A8FC7C9DD161887fFADF3054790576c8D': [XFNA], // XFNA 25 Call [30 June 2021]
     '0xB46F57e7Ce3a284d74b70447Ef9352B5E5Df8963': [UMA], // UMA 25 Call [30 June 2021]
     [FEI.address]: [DPI],
     [FRAX.address]: [FXS],
@@ -199,7 +199,7 @@ export const CUSTOM_BASES: {
     [AMPL.address]: [DAI, WNATIVE[ChainId.MAINNET]],
   },
   [ChainId.MATIC]: {
-    [MATIC.TEL.address]: [MATIC.FINA, MATIC.AAVE],
+    [MATIC.TEL.address]: [MATIC.FNA, MATIC.AAVE],
   },
 }
 
@@ -207,7 +207,7 @@ export const CUSTOM_BASES: {
  * Shows up in the currency select for swap and add liquidity
  */
 export const COMMON_BASES: ChainTokenList = {
-  [ChainId.MAINNET]: [...WRAPPED_NATIVE_ONLY[ChainId.MAINNET], DAI, USDC, USDT, WBTC, FINA[ChainId.MAINNET]],
+  [ChainId.MAINNET]: [...WRAPPED_NATIVE_ONLY[ChainId.MAINNET], DAI, USDC, USDT, WBTC, FNA[ChainId.MAINNET]],
   [ChainId.MATIC]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.MATIC],
     MATIC.USDC,
@@ -215,7 +215,7 @@ export const COMMON_BASES: ChainTokenList = {
     MATIC.DAI,
     MATIC.WETH,
     MATIC.USDT,
-    FINA[ChainId.MATIC],
+    FNA[ChainId.MATIC],
   ],
   [ChainId.FANTOM]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.FANTOM],
@@ -223,7 +223,7 @@ export const COMMON_BASES: ChainTokenList = {
     FANTOM.USDC,
     FANTOM.WBTC,
     FANTOM.WETH,
-    FINA[ChainId.FANTOM],
+    FNA[ChainId.FANTOM],
   ],
   [ChainId.BSC]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.BSC],
@@ -233,7 +233,7 @@ export const COMMON_BASES: ChainTokenList = {
     BSC.USDT,
     BSC.BTCB,
     BSC.WETH,
-    FINA[ChainId.BSC],
+    FNA[ChainId.BSC],
   ],
   [ChainId.ARBITRUM]: [...WRAPPED_NATIVE_ONLY[ChainId.ARBITRUM], ARBITRUM.WBTC, ARBITRUM.USDC],
   [ChainId.XDAI]: [
@@ -242,7 +242,7 @@ export const COMMON_BASES: ChainTokenList = {
     XDAI.USDT,
     XDAI.WBTC,
     XDAI.WETH,
-    FINA[ChainId.XDAI],
+    FNA[ChainId.XDAI],
   ],
   [ChainId.AVALANCHE]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.AVALANCHE],
@@ -251,7 +251,7 @@ export const COMMON_BASES: ChainTokenList = {
     AVALANCHE.WBTC,
     AVALANCHE.WETH,
     AVALANCHE.USDC,
-    FINA[ChainId.AVALANCHE],
+    FNA[ChainId.AVALANCHE],
   ],
   [ChainId.HARMONY]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.HARMONY],
@@ -260,7 +260,7 @@ export const COMMON_BASES: ChainTokenList = {
     HARMONY.USDT,
     HARMONY.WETH,
     HARMONY.WBTC,
-    FINA[ChainId.HARMONY],
+    FNA[ChainId.HARMONY],
   ],
   [ChainId.HECO]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.HECO],
@@ -269,7 +269,7 @@ export const COMMON_BASES: ChainTokenList = {
     HECO.USDT,
     HECO.WBTC,
     HECO.WETH,
-    FINA[ChainId.HECO],
+    FNA[ChainId.HECO],
   ],
   [ChainId.OKEX]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.OKEX],
@@ -278,7 +278,7 @@ export const COMMON_BASES: ChainTokenList = {
     OKEX.USDT,
     OKEX.WBTC,
     OKEX.WETH,
-    FINA[ChainId.OKEX],
+    FNA[ChainId.OKEX],
   ],
   [ChainId.CELO]: [...WRAPPED_NATIVE_ONLY[ChainId.CELO], CELO.cETH, CELO.cUSD, CELO.cEURO, CELO.cBTC],
   [ChainId.MOONRIVER]: [...WRAPPED_NATIVE_ONLY[ChainId.MOONRIVER]],
@@ -334,7 +334,7 @@ export const PINNED_PAIRS: {
   readonly [chainId in ChainId]?: [Token, Token][]
 } = {
   [ChainId.MAINNET]: [
-    [FINA[ChainId.MAINNET], WNATIVE[ChainId.MAINNET]],
+    [FNA[ChainId.MAINNET], WNATIVE[ChainId.MAINNET]],
     [
       new Token(ChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
       new Token(ChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin'),

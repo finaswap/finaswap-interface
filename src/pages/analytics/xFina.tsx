@@ -1,4 +1,4 @@
-import { ChainId, FINA_ADDRESS } from '@finaswap/sdk'
+import { ChainId, FNA_ADDRESS } from '@finaswap/sdk'
 import React, { useMemo } from 'react'
 import ScrollableGraph from '../../components/ScrollableGraph'
 import AnalyticsContainer from '../../features/analytics/AnalyticsContainer'
@@ -17,7 +17,7 @@ import {
 } from '../../services/graph'
 import { useBar, useBarHistory } from '../../services/graph/hooks/bar'
 import ColoredNumber from '../../features/analytics/ColoredNumber'
-import { XFINA } from '../../config/tokens'
+import { XFNA } from '../../config/tokens'
 
 export default function XFina() {
   const block1d = useBlock({ daysAgo: 1, chainId: ChainId.MAINNET })
@@ -30,9 +30,9 @@ export default function XFina() {
   const ethPrice = useNativePrice({ chainId: ChainId.MAINNET })
   const ethPrice1d = useNativePrice({ block: block1d, chainId: ChainId.MAINNET, shouldFetch: !!block1d })
 
-  const xFina = useTokens({ chainId: ChainId.MAINNET, subset: [XFINA.address] })?.[0]
-  const xFina1d = useTokens({ block: block1d, chainId: ChainId.MAINNET, subset: [XFINA.address] })?.[0]
-  const sushiDayData = useTokenDayData({ token: FINA_ADDRESS['1'], chainId: ChainId.MAINNET })
+  const xFina = useTokens({ chainId: ChainId.MAINNET, subset: [XFNA.address] })?.[0]
+  const xFina1d = useTokens({ block: block1d, chainId: ChainId.MAINNET, subset: [XFNA.address] })?.[0]
+  const sushiDayData = useTokenDayData({ token: FNA_ADDRESS['1'], chainId: ChainId.MAINNET })
 
   const bar = useBar()
   const bar1d = useBar({ block: block1d, shouldFetch: !!block1d })
@@ -162,8 +162,8 @@ export default function XFina() {
         <div className="flex flex-row space-x-4 overflow-auto">
           <InfoCard text="APY (Last 24 Hours)" number={formatPercent(APY1d)} />
           <InfoCard text="APY (Last 7 Days)" number={formatPercent(APY1w)} />
-          <InfoCard text="xFINA Supply" number={formatNumber(bar?.totalSupply)} />
-          <InfoCard text="xFINA : FINA" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
+          <InfoCard text="xFNA Supply" number={formatNumber(bar?.totalSupply)} />
+          <InfoCard text="xFNA : FNA" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
         </div>
         <div className="space-y-4">
           {graphs.map((graph, i) => (

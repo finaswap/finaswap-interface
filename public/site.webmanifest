@@ -1,6 +1,6 @@
 {
-    "name": "FINA App",
-    "short_name": "FINA",
+    "name": "FinaSwap App",
+    "short_name": "FinaSwap",
     "icons": [
         {
             "src": "/android-chrome-36x36.png",
