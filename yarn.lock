@@ -1914,10 +1914,10 @@
     subscriptions-transport-ws "0.9.16"
     ws "7.2.0"
 
-"@finaswap/sdk@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@finaswap/sdk/-/sdk-1.0.6.tgz#0b498eab1bf424d9d8b13c5049ee2a286788e961"
-  integrity sha512-QFURFM2+jsLRloRAakossnj/ixMzyfr5PNpoeuZU6qF8TTLeIiti4BH9hkl+fBdrsds6yBQoWqAPdtITX8rtiw==
+"@finaswap/sdk@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@finaswap/sdk/-/sdk-1.1.0.tgz#6bd7ef5d1b7121dd402f05cf8415396cf64beab3"
+  integrity sha512-grTs6ofmyH8e0bkbCen1oTRiRsngCALu0b9rLOBi7uSxi1mxy4gtySZuWMPln2DuN2n473FErtAK/c2FpG3kAQ==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
