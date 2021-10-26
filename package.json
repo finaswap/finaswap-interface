@@ -67,7 +67,7 @@
     "@sentry/nextjs": "^6.11.0",
     "@sushiswap/chainlink-whitelist": "0.2.5",
     "@finaswap/core": "1.0.1",
-    "@finaswap/default-token-list": "1.0.2",
+    "@finaswap/default-token-list": "1.0.3",
     "@sushiswap/limit-order-pair-list": "0.2.2",
     "@finaswap/sdk": "1.1.0",
     "@finaswap/fina-data": "^1.0.0",
