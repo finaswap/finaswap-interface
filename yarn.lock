@@ -1892,10 +1892,10 @@
   dependencies:
     eip-712 "^0.4.3"
 
-"@finaswap/default-token-list@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@finaswap/default-token-list/-/default-token-list-1.0.2.tgz#135fa5f66f77c69760d496661ccb65ac240aa115"
-  integrity sha512-Sw/llTXvvBajJYHy6xiAV0Mo+sldmJpN+YIBD8Ku3nwmgz7PrAhNFhQmkP8FlsMj/DleGftRHiwQbZOZ15wCUA==
+"@finaswap/default-token-list@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@finaswap/default-token-list/-/default-token-list-1.0.3.tgz#9474f2fdf0a5ba425d015a6b63ca18a6a769c1c0"
+  integrity sha512-XC4oj6MP1v6GbNnmNyiE3162TLBuggYNHlSzXa5XqsOlu+jDV94qj8svurzLLXfb2/CecCUKQEE9DDpzJeI/Uw==
 
 "@finaswap/fina-data@^1.0.0":
   version "1.0.0"
@@ -1914,10 +1914,10 @@
     subscriptions-transport-ws "0.9.16"
     ws "7.2.0"
 
-"@finaswap/sdk@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@finaswap/sdk/-/sdk-1.1.0.tgz#6bd7ef5d1b7121dd402f05cf8415396cf64beab3"
-  integrity sha512-grTs6ofmyH8e0bkbCen1oTRiRsngCALu0b9rLOBi7uSxi1mxy4gtySZuWMPln2DuN2n473FErtAK/c2FpG3kAQ==
+"@finaswap/sdk@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@finaswap/sdk/-/sdk-1.1.1.tgz#0483043b06a0f317e2860bf370970d7c80458bee"
+  integrity sha512-mwLF96kPesq08o31harqFtw+O9SwoIDbwIayzhDLZfCBu59s9HoWC6GNXRhdmJKRiH0E1+gEDn2/ZzfbitjhLQ==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
