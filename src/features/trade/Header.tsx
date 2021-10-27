@@ -78,7 +78,7 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
               <MyOrders />
             </div>
           )}
-          {chainId === ChainId.MAINNET && (
+          {(chainId === ChainId.MAINNET || chainId === ChainId.BSC) && (
             <div className="items-center hidden w-full h-full px-3 space-x-3 rounded cursor-pointer text-green text-opacity-80 hover:text-opacity-100 md:flex hover:bg-dark-800">
               <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -88,7 +88,7 @@ const ExchangeHeader: FC<ExchangeHeaderProps> = ({ input, output, allowedSlippag
               </svg>
 
               <div className="hidden md:block text-baseline">
-                <Gas />
+                <Gas network={chainId} />
               </div>
             </div>
           )}
