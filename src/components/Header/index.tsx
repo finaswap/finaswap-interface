@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, FNA_ADDRESS } from '@finaswap/sdk'
+import { ChainId, Currency, NATIVE, FNA_ADDRESS, BAR_ADDRESS } from '@finaswap/sdk'
 import { Feature, featureEnabled } from '../../functions/feature'
 import React, { useEffect, useState } from 'react'
 
@@ -113,7 +113,7 @@ function AppBar(): JSX.Element {
 
                 <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full p-4 lg:w-auto bg-dark-1000 lg:relative lg:p-0 lg:bg-transparent">
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
-                    {chainId && [ChainId.MAINNET].includes(chainId) && library && library.provider.isMetaMask && (
+                    {chainId && [ChainId.BSC].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
                         <QuestionHelper text={i18n._(t`Add xFNA to your MetaMask wallet`)}>
                           <div
@@ -123,11 +123,10 @@ function AppBar(): JSX.Element {
                                 const params: any = {
                                   type: 'ERC20',
                                   options: {
-                                    address: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
+                                    address: BAR_ADDRESS[chainId],
                                     symbol: 'XFNA',
                                     decimals: 18,
-                                    image:
-                                      'https://raw.githubusercontent.com/finaswap/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
+                                    image: `https://assets.finaswap.com/blockchains/binance/assets/${BAR_ADDRESS[chainId]}/logo.png`,
                                   },
                                 }
                                 library.provider
@@ -147,7 +146,7 @@ function AppBar(): JSX.Element {
                             }}
                           >
                             <Image
-                              src="/images/tokens/xsushi-square.jpg"
+                              src={`https://assets.finaswap.com/blockchains/binance/assets/${BAR_ADDRESS[chainId]}/logo.png`}
                               alt="xFNA"
                               width="38px"
                               height="38px"
@@ -172,7 +171,7 @@ function AppBar(): JSX.Element {
                                   symbol: 'FNA',
                                   decimals: 18,
                                   image:
-                                    'https://raw.githubusercontent.com/finaswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
+                                    'https://raw.githubusercontent.com/finaswap/assets/master/blockchains/binance/assets/0x214640AE606C18F15062d593C701BC8eF0CB00F7/logo.png',
                                 },
                               }
                               if (library && library.provider.isMetaMask && library.provider.request) {
@@ -193,7 +192,7 @@ function AppBar(): JSX.Element {
                             }}
                           >
                             <Image
-                              src="/images/tokens/sushi-square.jpg"
+                              src="https://raw.githubusercontent.com/finaswap/assets/master/blockchains/binance/assets/0x214640AE606C18F15062d593C701BC8eF0CB00F7/logo.png"
                               alt="FNA"
                               width="38px"
                               height="38px"
