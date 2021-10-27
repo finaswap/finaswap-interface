@@ -5,7 +5,7 @@ import { NetworkConnector } from '../entities/NetworkConnector'
 import RPC from './rpc'
 
 export const network = new NetworkConnector({
-  defaultChainId: 1,
+  defaultChainId: ChainId.BSC,
   urls: RPC,
 })
 
