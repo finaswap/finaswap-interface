@@ -36,12 +36,12 @@ module.exports = {
         },
       },
       colors: {
-        purple: '#a755dd',
-        blue: '#0993ec',
-        pink: '#f338c3',
-        green: '#7cff6b',
-        red: '#ff3838',
-        yellow: '#ffd166',
+        purple: '#8253A2',
+        blue: '#10B052',
+        pink: '#4166AA',
+        green: '#05AE52',
+        red: '#B12A50',
+        yellow: '#FAD618',
 
         'opaque-blue': '#0993ec80',
         'opaque-pink': '#f338c380',
