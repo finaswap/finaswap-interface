@@ -213,6 +213,7 @@ export function KashiProvider({ children }) {
       !chainId ||
       ![
         ChainId.MAINNET,
+        ChainId.ROPSTEN,
         ChainId.KOVAN,
         ChainId.BSC,
         ChainId.MATIC,
@@ -221,8 +222,11 @@ export function KashiProvider({ children }) {
         ChainId.AVALANCHE,
       ].includes(chainId)
     ) {
+      console.log('returning update pairs')
       return
     }
+
+    console.log('go ahead update pairs')
 
     if (boringHelperContract && bentoBoxContract) {
       // // console.log('READY TO RUMBLE')

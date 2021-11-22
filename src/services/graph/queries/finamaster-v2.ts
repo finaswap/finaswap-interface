@@ -21,7 +21,7 @@ export const poolsV2Query = gql`
       pair
       allocPoint
       slpBalance
-      masterChef {
+      finaMaster {
         id
         totalAllocPoint
       }
@@ -34,8 +34,8 @@ export const poolsV2Query = gql`
   }
 `
 
-export const masterChefV2PairAddressesQuery = gql`
-  query masterChefV2PairAddresses(
+export const finaMasterV2PairAddressesQuery = gql`
+  query finaMasterV2PairAddresses(
     $first: Int! = 1000
     $skip: Int! = 0
     $orderBy: String! = "id"

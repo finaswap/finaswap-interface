@@ -10,7 +10,7 @@ import Web3Connect from '../../components/Web3Connect'
 import { ApprovalState, useActiveWeb3React, useApproveCallback } from '../../hooks'
 import Dots from '../../components/Dots'
 import { BigNumber } from '@ethersproject/bignumber'
-import useMasterChef from './useMasterChef'
+import useFinaMaster from './useFinaMaster'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import {
   ChainId,
@@ -37,7 +37,7 @@ const ManageBar = ({ farm }) => {
   const [depositValue, setDepositValue] = useState('')
   const [withdrawValue, setWithdrawValue] = useState('')
 
-  const { deposit, withdraw } = useMasterChef(farm.chef)
+  const { deposit, withdraw } = useFinaMaster(farm.chef)
 
   const addTransaction = useTransactionAdder()
 
@@ -96,7 +96,7 @@ const ManageBar = ({ farm }) => {
   const parsedWithdrawValue = tryParseAmount(withdrawValue, liquidityToken)
 
   const APPROVAL_ADDRESSES = {
-    [Chef.MASTERCHEF]: { [ChainId.MAINNET]: MASTERCHEF_ADDRESS[ChainId.MAINNET] },
+    [Chef.finamaster]: { [ChainId.MAINNET]: MASTERCHEF_ADDRESS[ChainId.MAINNET] },
     [Chef.MASTERCHEF_V2]: { [ChainId.MAINNET]: MASTERCHEF_V2_ADDRESS[ChainId.MAINNET] },
     [Chef.MINICHEF]: {
       [ChainId.MATIC]: MINICHEF_ADDRESS[ChainId.MATIC],

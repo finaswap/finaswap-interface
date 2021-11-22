@@ -12,7 +12,7 @@ import { easyAmount, formatNumber } from '../../functions'
 import { BigNumber } from '@ethersproject/bignumber'
 import usePendingReward from './usePendingReward'
 import CurrencyLogo from '../../components/CurrencyLogo'
-import useMasterChef from './useMasterChef'
+import useFinaMaster from './useFinaMaster'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import { useRouter } from 'next/router'
 import Button from '../../components/Button'
@@ -24,7 +24,7 @@ const InvestmentDetails = ({ farm }) => {
 
   const { chainId } = useActiveWeb3React()
 
-  const { harvest } = useMasterChef(farm.chef)
+  const { harvest } = useFinaMaster(farm.chef)
 
   const router = useRouter()
 

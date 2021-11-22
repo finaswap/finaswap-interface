@@ -277,7 +277,7 @@
         "type": "address"
       }
     ],
-    "name": "balanceToMasterChefv2",
+    "name": "balanceToFinaMasterv2",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -446,7 +446,7 @@
         "type": "address"
       }
     ],
-    "name": "depositToMasterChefv2",
+    "name": "depositToFinaMasterv2",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1229,7 +1229,7 @@
         "type": "bytes"
       }
     ],
-    "name": "zapToMasterChef",
+    "name": "zapToFinaMaster",
     "outputs": [
       {
         "internalType": "uint256",

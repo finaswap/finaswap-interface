@@ -1885,17 +1885,17 @@
     "@ethersproject/properties" "^5.5.0"
     "@ethersproject/strings" "^5.5.0"
 
-"@finaswap/core@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@finaswap/core/-/core-1.0.1.tgz#9587d0509cb0e8052d9a95dd7f6ef668640e5eaa"
-  integrity sha512-Vyhsgi2l+BjcgsTPh3mSfWUCXgCYQVUp1UsLkHHH9+7rTy0+MYhUuIR/G4M7b/4DP13hGpVOnVogtiwWJs6Npw==
+"@finaswap/core@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@finaswap/core/-/core-1.0.2.tgz#ddb2a928aa864e352153636d5747f773150728bd"
+  integrity sha512-zyUP6ewjkJuUio7JnR56/GVCIyMMRizbtK2K9XRNnx07h9aS3ldCnUQ886JxTNM2htV/1wwjmjjkcrQuYk59mg==
   dependencies:
     eip-712 "^0.4.3"
 
-"@finaswap/default-token-list@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@finaswap/default-token-list/-/default-token-list-1.0.3.tgz#9474f2fdf0a5ba425d015a6b63ca18a6a769c1c0"
-  integrity sha512-XC4oj6MP1v6GbNnmNyiE3162TLBuggYNHlSzXa5XqsOlu+jDV94qj8svurzLLXfb2/CecCUKQEE9DDpzJeI/Uw==
+"@finaswap/default-token-list@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@finaswap/default-token-list/-/default-token-list-1.0.4.tgz#9e50dc744c5862f7e5d33686dcab047f42392d41"
+  integrity sha512-diDYjdhORo+WFw0q4Yj2xwxNSQQ/1S97JjneJTiIrB+NDBV1FI9TKur5KTzssPEMjLzYKgc/0UFjoYp7X1Utsw==
 
 "@finaswap/fina-data@^1.0.0":
   version "1.0.0"
@@ -1914,10 +1914,10 @@
     subscriptions-transport-ws "0.9.16"
     ws "7.2.0"
 
-"@finaswap/sdk@1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@finaswap/sdk/-/sdk-1.1.6.tgz#d60abe1c1938b78a7b99978a89c1f27cb77591f9"
-  integrity sha512-wpljF3Wh42qNaXfRrj/ltKNvyKtQYjI+5ePlQbt9teIlx08SsHi0ci3Azu4h6iKTgwtpsAKfZ0TetNphReOdGw==
+"@finaswap/sdk@1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@finaswap/sdk/-/sdk-1.1.7.tgz#438722f73e3d018b594d460e86d8d680ec2ec8f1"
+  integrity sha512-PyL7p8xC04OTUQyjl9131kCEeVv20eh63KRvojvP8pEfoDxHvvaJf03yVOQmrayHGtk5kIhRL00HSxvwwYdkPg==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"

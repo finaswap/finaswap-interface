@@ -5,8 +5,8 @@ import {
   useEthPrice,
   useFarms,
   useKashiPairs,
-  useMasterChefV1FinaPerBlock,
-  useMasterChefV1TotalAllocPoint,
+  useFinaMasterV1FinaPerBlock,
+  useFinaMasterV1TotalAllocPoint,
   useMaticPrice,
   useNativePrice,
   useOnePrice,
@@ -41,8 +41,8 @@ export default function useFarmRewards() {
   const kashiPairs = useKashiPairs({ subset: farmAddresses, shouldFetch: !!farmAddresses, chainId })
 
   const averageBlockTime = useAverageBlockTime()
-  const masterChefV1TotalAllocPoint = useMasterChefV1TotalAllocPoint()
-  const masterChefV1FinaPerBlock = useMasterChefV1FinaPerBlock()
+  const finaMasterV1TotalAllocPoint = useFinaMasterV1TotalAllocPoint()
+  const finaMasterV1FinaPerBlock = useFinaMasterV1FinaPerBlock()
 
   const [sushiPrice, ethPrice, maticPrice, stakePrice, onePrice] = [
     useFinaPrice(),
@@ -56,7 +56,7 @@ export default function useFarmRewards() {
 
   const map = (pool) => {
     // TODO: Deal with inconsistencies between properties on subgraph
-    pool.owner = pool?.owner || pool?.masterChef || pool?.miniChef
+    pool.owner = pool?.owner || pool?.finaMaster || pool?.miniChef
     pool.balance = pool?.balance || pool?.slpBalance
 
     const swapPair = swapPairs?.find((pair) => pair.id === pool.pair)
@@ -75,7 +75,7 @@ export default function useFarmRewards() {
       const sushiPerBlock =
         pool?.owner?.sushiPerBlock / 1e18 ||
         (pool?.owner?.sushiPerSecond / 1e18) * averageBlockTime ||
-        masterChefV1FinaPerBlock
+        finaMasterV1FinaPerBlock
 
       const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
 
@@ -91,7 +91,7 @@ export default function useFarmRewards() {
 
       if (pool.chef === Chef.MASTERCHEF_V2) {
         // override for mcv2...
-        pool.owner.totalAllocPoint = masterChefV1TotalAllocPoint
+        pool.owner.totalAllocPoint = finaMasterV1TotalAllocPoint
 
         const icon = ['0', '3', '4', '8'].includes(pool.id)
           ? `https://raw.githubusercontent.com/finaswap/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`

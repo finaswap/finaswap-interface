@@ -44,8 +44,8 @@ import IUniswapV2PairABI from '../constants/abis/uniswap-v2-pair.json'
 import LIMIT_ORDER_ABI from '../constants/abis/limit-order.json'
 import LIMIT_ORDER_HELPER_ABI from '../constants/abis/limit-order-helper.json'
 import MAKER_ABI from '../constants/abis/maker.json'
-import MASTERCHEF_ABI from '../constants/abis/masterchef.json'
-import MASTERCHEF_V2_ABI from '../constants/abis/masterchef-v2.json'
+import MASTERCHEF_ABI from '../constants/abis/finamaster.json'
+import MASTERCHEF_V2_ABI from '../constants/abis/finamaster-v2.json'
 import MEOWSHI_ABI from '../constants/abis/meowshi.json'
 import MERKLE_DISTRIBUTOR_ABI from '../constants/abis/merkle-distributor.json'
 import MINICHEF_ABI from '../constants/abis/minichef-v2.json'
@@ -136,12 +136,12 @@ export function useFinaContract(withSignerIfPossible = true): Contract | null {
   return useContract(chainId && FNA_ADDRESS[chainId], FNA_ABI, withSignerIfPossible)
 }
 
-export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
+export function useFinaMasterContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && MASTERCHEF_ADDRESS[chainId], MASTERCHEF_ABI, withSignerIfPossible)
 }
 
-export function useMasterChefV2Contract(withSignerIfPossible?: boolean): Contract | null {
+export function useFinaMasterV2Contract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && MASTERCHEF_V2_ADDRESS[chainId], MASTERCHEF_V2_ABI, withSignerIfPossible)
 }

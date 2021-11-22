@@ -33,8 +33,8 @@ export const poolsQuery = gql`
   }
 `
 
-export const masterChefV1PairAddressesQuery = gql`
-  query masterChefV1PairAddresses(
+export const finaMasterV1PairAddressesQuery = gql`
+  query finaMasterV1PairAddresses(
     $first: Int! = 1000
     $skip: Int! = 0
     $orderBy: String! = "id"
@@ -52,18 +52,18 @@ export const masterChefV1PairAddressesQuery = gql`
   }
 `
 
-export const masterChefV1TotalAllocPointQuery = gql`
-  query masterChefV1TotalAllocPoint($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
-    masterChef(id: $id) {
+export const finaMasterV1TotalAllocPointQuery = gql`
+  query finaMasterV1TotalAllocPoint($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+    finaMaster(id: $id) {
       id
       totalAllocPoint
     }
   }
 `
 
-export const masterChefV1FinaPerBlockQuery = gql`
-  query masterChefV1FinaPerBlock($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
-    masterChef(id: $id) {
+export const finaMasterV1FinaPerBlockQuery = gql`
+  query finaMasterV1FinaPerBlock($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+    finaMaster(id: $id) {
       id
       sushiPerBlock
     }

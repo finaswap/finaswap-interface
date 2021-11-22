@@ -1,5 +1,5 @@
 export enum Chef {
-  MASTERCHEF,
+  finamaster,
   MASTERCHEF_V2,
   MINICHEF,
 }

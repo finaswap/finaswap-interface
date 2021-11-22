@@ -1,7 +1,7 @@
 [
     {
         "inputs": [
-            { "internalType": "contract IMasterChef", "name": "_MASTER_CHEF", "type": "address" },
+            { "internalType": "contract IFinaMaster", "name": "_MASTER_CHEF", "type": "address" },
             { "internalType": "contract IERC20", "name": "_sushi", "type": "address" },
             { "internalType": "uint256", "name": "_MASTER_PID", "type": "uint256" }
         ],
@@ -97,7 +97,7 @@
     {
         "inputs": [],
         "name": "MASTER_CHEF",
-        "outputs": [{ "internalType": "contract IMasterChef", "name": "", "type": "address" }],
+        "outputs": [{ "internalType": "contract IFinaMaster", "name": "", "type": "address" }],
         "stateMutability": "view",
         "type": "function"
     },
@@ -173,7 +173,7 @@
     },
     {
         "inputs": [],
-        "name": "harvestFromMasterChef",
+        "name": "harvestFromFinaMaster",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -332,7 +332,7 @@
                     { "internalType": "uint64", "name": "lastRewardBlock", "type": "uint64" },
                     { "internalType": "uint64", "name": "allocPoint", "type": "uint64" }
                 ],
-                "internalType": "struct MasterChefV2.PoolInfo",
+                "internalType": "struct FinaMasterV2.PoolInfo",
                 "name": "pool",
                 "type": "tuple"
             }

@@ -9,7 +9,7 @@ import {
 import { Chef } from './enum'
 import { NEVER_RELOAD, useSingleCallResult, useSingleContractMultipleData } from '../../state/multicall/hooks'
 import { Dispatch, useCallback, useEffect, useMemo, useState } from 'react'
-import { useMasterChefContract, useMasterChefV2Contract, useMiniChefContract } from '../../hooks/useContract'
+import { useFinaMasterContract, useFinaMasterV2Contract, useMiniChefContract } from '../../hooks/useContract'
 
 import { Contract } from '@ethersproject/contracts'
 import { FNA } from '../../config/tokens'
@@ -19,16 +19,16 @@ import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import zip from 'lodash/zip'
 
 export function useChefContract(chef: Chef) {
-  const masterChefContract = useMasterChefContract()
-  const masterChefV2Contract = useMasterChefV2Contract()
+  const finaMasterContract = useFinaMasterContract()
+  const finaMasterV2Contract = useFinaMasterV2Contract()
   const miniChefContract = useMiniChefContract()
   const contracts = useMemo(
     () => ({
-      [Chef.MASTERCHEF]: masterChefContract,
-      [Chef.MASTERCHEF_V2]: masterChefV2Contract,
+      [Chef.finamaster]: finaMasterContract,
+      [Chef.MASTERCHEF_V2]: finaMasterV2Contract,
       [Chef.MINICHEF]: miniChefContract,
     }),
-    [masterChefContract, masterChefV2Contract, miniChefContract]
+    [finaMasterContract, finaMasterV2Contract, miniChefContract]
   )
   return useMemo(() => {
     return contracts[chef]
@@ -36,21 +36,21 @@ export function useChefContract(chef: Chef) {
 }
 
 const CHEFS = {
-  [ChainId.MAINNET]: [Chef.MASTERCHEF, Chef.MASTERCHEF_V2],
+  [ChainId.MAINNET]: [Chef.finamaster, Chef.MASTERCHEF_V2],
   [ChainId.MATIC]: [Chef.MINICHEF],
 }
 
 export function useChefContracts(chefs: Chef[]) {
-  const masterChefContract = useMasterChefContract()
-  const masterChefV2Contract = useMasterChefV2Contract()
+  const finaMasterContract = useFinaMasterContract()
+  const finaMasterV2Contract = useFinaMasterV2Contract()
   const miniChefContract = useMiniChefContract()
   const contracts = useMemo(
     () => ({
-      [Chef.MASTERCHEF]: masterChefContract,
-      [Chef.MASTERCHEF_V2]: masterChefV2Contract,
+      [Chef.finamaster]: finaMasterContract,
+      [Chef.MASTERCHEF_V2]: finaMasterV2Contract,
       [Chef.MINICHEF]: miniChefContract,
     }),
-    [masterChefContract, masterChefV2Contract, miniChefContract]
+    [finaMasterContract, finaMasterV2Contract, miniChefContract]
   )
   return chefs.map((chef) => contracts[chef])
 }
@@ -141,7 +141,7 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
 
   const getChef = useCallback(() => {
     if (MASTERCHEF_ADDRESS[chainId] === contract.address) {
-      return Chef.MASTERCHEF
+      return Chef.finamaster
     } else if (MASTERCHEF_V2_ADDRESS[chainId] === contract.address) {
       return Chef.MASTERCHEF_V2
     } else if (MINICHEF_ADDRESS[chainId] === contract.address) {
@@ -168,12 +168,12 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
 }
 
 export function usePositions(chainId = undefined) {
-  const [masterChefV1Positions, masterChefV2Positions, miniChefPositions] = [
-    useChefPositions(useMasterChefContract(), undefined, chainId),
-    useChefPositions(useMasterChefV2Contract(), undefined, chainId),
+  const [finaMasterV1Positions, finaMasterV2Positions, miniChefPositions] = [
+    useChefPositions(useFinaMasterContract(), undefined, chainId),
+    useChefPositions(useFinaMasterV2Contract(), undefined, chainId),
     useChefPositions(useMiniChefContract(), undefined, chainId),
   ]
-  return concat(masterChefV1Positions, masterChefV2Positions, miniChefPositions)
+  return concat(finaMasterV1Positions, finaMasterV2Positions, miniChefPositions)
 }
 
 /*

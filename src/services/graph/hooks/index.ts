@@ -1,10 +1,10 @@
 import {
-  getMasterChefV1Farms,
-  getMasterChefV1PairAddreses,
-  getMasterChefV1FinaPerBlock,
-  getMasterChefV1TotalAllocPoint,
-  getMasterChefV2Farms,
-  getMasterChefV2PairAddreses,
+  getFinaMasterV1Farms,
+  getFinaMasterV1PairAddreses,
+  getFinaMasterV1FinaPerBlock,
+  getFinaMasterV1TotalAllocPoint,
+  getFinaMasterV2Farms,
+  getFinaMasterV2PairAddreses,
   getMiniChefFarms,
   getMiniChefPairAddreses,
 } from '../fetchers'
@@ -20,23 +20,23 @@ export * from './bentobox'
 export * from './blocks'
 export * from './exchange'
 
-export function useMasterChefV1TotalAllocPoint(swrConfig = undefined) {
+export function useFinaMasterV1TotalAllocPoint(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.BSC, ChainId.ROPSTEN].includes(chainId)
   const { data } = useSWR(
-    shouldFetch ? 'masterChefV1TotalAllocPoint' : null,
-    () => getMasterChefV1TotalAllocPoint(),
+    shouldFetch ? 'finaMasterV1TotalAllocPoint' : null,
+    () => getFinaMasterV1TotalAllocPoint(),
     swrConfig
   )
   return data
 }
 
-export function useMasterChefV1FinaPerBlock(swrConfig = undefined) {
+export function useFinaMasterV1FinaPerBlock(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && [ChainId.BSC, ChainId.ROPSTEN].includes(chainId)
   const { data } = useSWR(
-    shouldFetch ? 'masterChefV1FinaPerBlock' : null,
-    () => getMasterChefV1FinaPerBlock(),
+    shouldFetch ? 'finaMasterV1FinaPerBlock' : null,
+    () => getFinaMasterV1FinaPerBlock(),
     swrConfig
   )
   return data
@@ -46,18 +46,18 @@ interface useFarmsProps {
   chainId: number
 }
 
-export function useMasterChefV1Farms({ chainId }: useFarmsProps, swrConfig = undefined) {
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
-  const { data } = useSWR(shouldFetch ? ['masterChefV1Farms'] : null, () => getMasterChefV1Farms(undefined), swrConfig)
+export function useFinaMasterV1Farms({ chainId }: useFarmsProps, swrConfig = undefined) {
+  const shouldFetch = chainId && [ChainId.BSC, ChainId.ROPSTEN].includes(chainId)
+  const { data } = useSWR(shouldFetch ? ['finaMasterV1Farms'] : null, () => getFinaMasterV1Farms(undefined), swrConfig)
   return useMemo(() => {
     if (!data) return []
-    return data.map((data) => ({ ...data, chef: Chef.MASTERCHEF }))
+    return data.map((data) => ({ ...data, chef: Chef.finamaster }))
   }, [data])
 }
 
-export function useMasterChefV2Farms({ chainId }: useFarmsProps, swrConfig: SWRConfiguration = undefined) {
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
-  const { data } = useSWR(shouldFetch ? 'masterChefV2Farms' : null, () => getMasterChefV2Farms(), swrConfig)
+export function useFinaMasterV2Farms({ chainId }: useFarmsProps, swrConfig: SWRConfiguration = undefined) {
+  const shouldFetch = chainId && [ChainId.BSC, ChainId.ROPSTEN].includes(chainId)
+  const { data } = useSWR(shouldFetch ? 'finaMasterV2Farms' : null, () => getFinaMasterV2Farms(), swrConfig)
   return useMemo(() => {
     if (!data) return []
     return data.map((data) => ({ ...data, chef: Chef.MASTERCHEF_V2 }))
@@ -78,23 +78,23 @@ export function useMiniChefFarms({ chainId }: useFarmsProps, swrConfig: SWRConfi
 }
 
 export function useFarms({ chainId }: useFarmsProps, swrConfig: SWRConfiguration = undefined) {
-  const masterChefV1Farms = useMasterChefV1Farms({ chainId })
-  const masterChefV2Farms = useMasterChefV2Farms({ chainId })
+  const finaMasterV1Farms = useFinaMasterV1Farms({ chainId })
+  const finaMasterV2Farms = useFinaMasterV2Farms({ chainId })
   const miniChefFarms = useMiniChefFarms({ chainId })
   // useEffect(() => {
-  //   console.log('debug', { masterChefV1Farms, masterChefV2Farms, miniChefFarms })
-  // }, [masterChefV1Farms, masterChefV2Farms, miniChefFarms])
+  //   console.log('debug', { finaMasterV1Farms, finaMasterV2Farms, miniChefFarms })
+  // }, [finaMasterV1Farms, finaMasterV2Farms, miniChefFarms])
   return useMemo(
-    () => concat(masterChefV1Farms, masterChefV2Farms, miniChefFarms).filter((pool) => pool && pool.pair),
-    [masterChefV1Farms, masterChefV2Farms, miniChefFarms]
+    () => concat(finaMasterV1Farms, finaMasterV2Farms, miniChefFarms).filter((pool) => pool && pool.pair),
+    [finaMasterV1Farms, finaMasterV2Farms, miniChefFarms]
   )
 }
 
-export function useMasterChefV1PairAddresses() {
+export function useFinaMasterV1PairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
-  const { data } = useSWR(shouldFetch ? ['masterChefV1PairAddresses', chainId] : null, (_) =>
-    getMasterChefV1PairAddreses()
+  const shouldFetch = chainId && [ChainId.BSC, ChainId.ROPSTEN].includes(chainId)
+  const { data } = useSWR(shouldFetch ? ['finaMasterV1PairAddresses', chainId] : null, (_) =>
+    getFinaMasterV1PairAddreses()
   )
   return useMemo(() => {
     if (!data) return []
@@ -102,11 +102,11 @@ export function useMasterChefV1PairAddresses() {
   }, [data])
 }
 
-export function useMasterChefV2PairAddresses() {
+export function useFinaMasterV2PairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
-  const { data } = useSWR(shouldFetch ? ['masterChefV2PairAddresses', chainId] : null, (_) =>
-    getMasterChefV2PairAddreses()
+  const shouldFetch = chainId && [ChainId.BSC, ChainId.ROPSTEN].includes(chainId)
+  const { data } = useSWR(shouldFetch ? ['finaMasterV2PairAddresses', chainId] : null, (_) =>
+    getFinaMasterV2PairAddreses()
   )
   return useMemo(() => {
     if (!data) return []
@@ -127,11 +127,11 @@ export function useMiniChefPairAddresses() {
 }
 
 export function useFarmPairAddresses() {
-  const masterChefV1PairAddresses = useMasterChefV1PairAddresses()
-  const masterChefV2PairAddresses = useMasterChefV2PairAddresses()
+  const finaMasterV1PairAddresses = useFinaMasterV1PairAddresses()
+  const finaMasterV2PairAddresses = useFinaMasterV2PairAddresses()
   const miniChefPairAddresses = useMiniChefPairAddresses()
   return useMemo(
-    () => concat(masterChefV1PairAddresses, masterChefV2PairAddresses, miniChefPairAddresses),
-    [masterChefV1PairAddresses, masterChefV2PairAddresses, miniChefPairAddresses]
+    () => concat(finaMasterV1PairAddresses, finaMasterV2PairAddresses, miniChefPairAddresses),
+    [finaMasterV1PairAddresses, finaMasterV2PairAddresses, miniChefPairAddresses]
   )
 }

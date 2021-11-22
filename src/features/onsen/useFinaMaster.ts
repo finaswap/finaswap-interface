@@ -6,7 +6,7 @@ import { Zero } from '@ethersproject/constants'
 import { useCallback } from 'react'
 import { useChefContract } from './hooks'
 
-export default function useMasterChef(chef: Chef) {
+export default function useFinaMaster(chef: Chef) {
   const { account } = useActiveWeb3React()
 
   const sushi = useFinaContract()
@@ -19,7 +19,7 @@ export default function useMasterChef(chef: Chef) {
       try {
         let tx
 
-        if (chef === Chef.MASTERCHEF) {
+        if (chef === Chef.finamaster) {
           tx = await contract?.deposit(pid, amount)
         } else {
           tx = await contract?.deposit(pid, amount, account)
@@ -40,7 +40,7 @@ export default function useMasterChef(chef: Chef) {
       try {
         let tx
 
-        if (chef === Chef.MASTERCHEF) {
+        if (chef === Chef.finamaster) {
           tx = await contract?.withdraw(pid, amount)
         } else {
           tx = await contract?.withdraw(pid, amount, account)
@@ -60,18 +60,18 @@ export default function useMasterChef(chef: Chef) {
       try {
         let tx
 
-        if (chef === Chef.MASTERCHEF) {
+        if (chef === Chef.finamaster) {
           tx = await contract?.deposit(pid, Zero)
         } else if (chef === Chef.MASTERCHEF_V2) {
           const pendingFina = await contract?.pendingFina(pid, account)
 
           const balanceOf = await sushi?.balanceOf(contract?.address)
 
-          // If MasterChefV2 doesn't have enough sushi to harvest, batch in a harvest.
+          // If FinaMasterV2 doesn't have enough sushi to harvest, batch in a harvest.
           if (pendingFina.gt(balanceOf)) {
             tx = await contract?.batch(
               [
-                contract?.interface?.encodeFunctionData('harvestFromMasterChef'),
+                contract?.interface?.encodeFunctionData('harvestFromFinaMaster'),
                 contract?.interface?.encodeFunctionData('harvest', [pid, account]),
               ],
               true

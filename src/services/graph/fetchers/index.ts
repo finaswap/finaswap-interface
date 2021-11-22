@@ -27,5 +27,5 @@ export async function pager(endpoint, query, variables = {}) {
 
 export * from './blocks'
 export * from './exchange'
-export * from './masterchef'
+export * from './finamaster'
 export * from './status'
