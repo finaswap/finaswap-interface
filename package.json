@@ -70,7 +70,7 @@
     "@finaswap/default-token-list": "1.0.4",
     "@sushiswap/limit-order-pair-list": "0.2.2",
     "@finaswap/sdk": "1.1.7",
-    "@finaswap/fina-data": "^1.0.0",
+    "@finaswap/fina-data": "1.0.1",
     "@tailwindcss/jit": "^0.1.18",
     "@transak/transak-sdk": "^1.0.28",
     "@types/node": "^15.12.2",
