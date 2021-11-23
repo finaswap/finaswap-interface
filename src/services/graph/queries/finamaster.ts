@@ -26,7 +26,7 @@ export const poolsQuery = gql`
       userCount
       owner {
         id
-        sushiPerBlock
+        finaPerBlock
         totalAllocPoint
       }
     }
@@ -53,7 +53,7 @@ export const finaMasterV1PairAddressesQuery = gql`
 `
 
 export const finaMasterV1TotalAllocPointQuery = gql`
-  query finaMasterV1TotalAllocPoint($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+  query finaMasterV1TotalAllocPoint($id: String! = "0xa1d10a75932642342371b15d9dfe09f2519cc995") {
     finaMaster(id: $id) {
       id
       totalAllocPoint
@@ -62,10 +62,10 @@ export const finaMasterV1TotalAllocPointQuery = gql`
 `
 
 export const finaMasterV1FinaPerBlockQuery = gql`
-  query finaMasterV1FinaPerBlock($id: String! = "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd") {
+  query finaMasterV1FinaPerBlock($id: String! = "0xa1d10a75932642342371b15d9dfe09f2519cc995") {
     finaMaster(id: $id) {
       id
-      sushiPerBlock
+      finaPerBlock
     }
   }
 `

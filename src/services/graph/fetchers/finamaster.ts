@@ -48,9 +48,9 @@ export const getFinaMasterV1TotalAllocPoint = async () => {
 
 export const getFinaMasterV1FinaPerBlock = async () => {
   const {
-    finaMaster: { sushiPerBlock },
+    finaMaster: { finaPerBlock },
   } = await finaMasterV1(finaMasterV1FinaPerBlockQuery)
-  return sushiPerBlock / 1e18
+  return finaPerBlock / 1e18
 }
 
 export const getFinaMasterV1Farms = async (variables = undefined) => {
@@ -60,7 +60,6 @@ export const getFinaMasterV1Farms = async (variables = undefined) => {
 
 export const getFinaMasterV1PairAddreses = async () => {
   const { pools } = await finaMasterV1(finaMasterV1PairAddressesQuery)
-  console.log(`totalAllocPoint: ${totalAllocPoint}`)
   return pools
 }
 

@@ -71,13 +71,13 @@ export default function useFarmRewards() {
     const blocksPerHour = 3600 / averageBlockTime
 
     function getRewards() {
-      // TODO: Some subgraphs give sushiPerBlock & sushiPerSecond, and mcv2 gives nothing
-      const sushiPerBlock =
-        pool?.owner?.sushiPerBlock / 1e18 ||
+      // TODO: Some subgraphs give finaPerBlock & sushiPerSecond, and mcv2 gives nothing
+      const finaPerBlock =
+        pool?.owner?.finaPerBlock / 1e18 ||
         (pool?.owner?.sushiPerSecond / 1e18) * averageBlockTime ||
         finaMasterV1FinaPerBlock
 
-      const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
+      const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * finaPerBlock
 
       const defaultReward = {
         token: 'FNA',
@@ -122,8 +122,8 @@ export default function useFarmRewards() {
         rewards[1] = reward
       } else if (pool.chef === Chef.MINICHEF) {
         const sushiPerSecond = ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.miniChef.sushiPerSecond) / 1e18
-        const sushiPerBlock = sushiPerSecond * averageBlockTime
-        const sushiPerDay = sushiPerBlock * blocksPerDay
+        const finaPerBlock = sushiPerSecond * averageBlockTime
+        const sushiPerDay = finaPerBlock * blocksPerDay
         const rewardPerSecond =
           ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.rewarder.rewardPerSecond) / 1e18
         const rewardPerBlock = rewardPerSecond * averageBlockTime
@@ -153,7 +153,7 @@ export default function useFarmRewards() {
 
         rewards[0] = {
           ...defaultReward,
-          rewardPerBlock: sushiPerBlock,
+          rewardPerBlock: finaPerBlock,
           rewardPerDay: sushiPerDay,
         }
 

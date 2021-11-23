@@ -13,13 +13,13 @@ const items = (i18n: I18n) => [
   {
     name: i18n._(t`Docs`),
     description: i18n._(t`Documentation for users of Fina.`),
-    href: 'https://docs.sushi.com',
+    href: 'https://docs.finaswap.com',
     external: true,
   },
   {
     name: i18n._(t`Dev`),
     description: i18n._(t`Documentation for developers of Fina.`),
-    href: 'https://dev.sushi.com',
+    href: 'https://dev.finaswap.com',
     external: true,
   },
   {

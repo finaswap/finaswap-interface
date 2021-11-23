@@ -1897,10 +1897,10 @@
   resolved "https://registry.yarnpkg.com/@finaswap/default-token-list/-/default-token-list-1.0.4.tgz#9e50dc744c5862f7e5d33686dcab047f42392d41"
   integrity sha512-diDYjdhORo+WFw0q4Yj2xwxNSQQ/1S97JjneJTiIrB+NDBV1FI9TKur5KTzssPEMjLzYKgc/0UFjoYp7X1Utsw==
 
-"@finaswap/fina-data@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@finaswap/fina-data/-/fina-data-1.0.0.tgz#e62fc39dfcf8e9919d412d9b18749312b536b2bf"
-  integrity sha512-xIPd+Hg6HZ3Kk1GuVolUVFMfxYWycCwPg5j8I3vTNklmledVYdV/+hWQ56vy7eLdN/ZTtVHF4oSRo5+Ra8fM+w==
+"@finaswap/fina-data@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@finaswap/fina-data/-/fina-data-1.0.1.tgz#dbd759db08ecf2bdc56f15097e854d9605828dd4"
+  integrity sha512-nwIc6o0gFBUNSYKKt/QRr6TAaq1Gbu35A9Q8Kfb6CHcjxm3QLYiDH/g2UHFrIUBcTgktTYRjm81Nex8fzapU+g==
   dependencies:
     bluebird "^3.7.2"
     commander "6.1.0"
